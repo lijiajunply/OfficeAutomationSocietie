@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace OfficeAutomationSocieties.WebApi.Controllers;
+namespace OA.WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]

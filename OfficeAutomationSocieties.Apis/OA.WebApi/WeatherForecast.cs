@@ -1,4 +1,4 @@
-namespace OfficeAutomationSocieties.WebApi;
+namespace OA.WebApi;
 
 public class WeatherForecast
 {
