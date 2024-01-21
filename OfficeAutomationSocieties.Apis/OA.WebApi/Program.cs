@@ -1,25 +1,93 @@
-var builder = WebApplication.CreateBuilder(args);
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.IdentityModel.Tokens;
+using OA.Share.DataModels;
+using OA.WebApi;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region 数据库依赖注入
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContextFactory<OaContext>(opt =>
+        opt.UseSqlite(configuration.GetConnectionString("SQLite")));
+}
+else if (builder.Environment.IsProduction())
+{
+    builder.Services.AddDbContextFactory<OaContext>(opt =>
+        opt.UseMySQL(configuration.GetConnectionString("MySQL")!));
+}
+
+#endregion
+
+#region 添加JWT方案
+
+builder.Services.AddOptions();
+builder.Services.AddAuthorizationCore();
+builder.Services.AddAuthentication(options => { options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidateIssuer = false, //是否验证Issuer
+            ValidateAudience = false, //是否验证Audience
+            ValidateIssuerSigningKey = true, //是否验证SecurityKey
+            IssuerSigningKey =
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"]!)), //SecurityKey
+            ValidateLifetime = true, //是否验证失效时间
+            ClockSkew = TimeSpan.FromSeconds(30), //过期时间容错值，解决服务器端时间不同步问题（秒）
+            RequireExpirationTime = true,
+        };
+    });
+
+builder.Services.AddSingleton(new JwtHelper(configuration));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<TokenActionFilter>();
+
+#endregion
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+#region 添加数据库
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<OaContext>();
+    try
+    {
+        context.Database.Migrate();
+        context.Database.EnsureCreated();
+    }
+    catch
+    {
+        var databaseCreator = (RelationalDatabaseCreator)context.Database.GetService<IDatabaseCreator>();
+        databaseCreator.CreateTables();
+        context.Database.Migrate();
+    }
+
+    context.SaveChanges();
+    context.Dispose();
+}
+
+#endregion
+
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
