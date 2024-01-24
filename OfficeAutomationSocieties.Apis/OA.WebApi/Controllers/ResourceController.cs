@@ -1,25 +1,28 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OA.Share.DataModels;
 
 namespace OA.WebApi.Controllers;
 
-[Route("api/[controller]")]
+[Authorize]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class ResourceController : ControllerBase
 {
-    private readonly OaContext _context;
+    private readonly IDbContextFactory<OaContext> _factory;
 
-    public ResourceController(OaContext context)
+    public ResourceController(IDbContextFactory<OaContext> factory)
     {
-        _context = context;
+        _factory = factory;
     }
 
     // GET: api/Resource
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ResourceModel>>> GetResources()
     {
-        if (_context.Resources == null)
+        await using var _context = await _factory.CreateDbContextAsync();
+        if (_context.Resources == null!)
         {
             return NotFound();
         }
@@ -31,7 +34,8 @@ public class ResourceController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<ResourceModel>> GetResourceModel(string id)
     {
-        if (_context.Resources == null)
+        await using var _context = await _factory.CreateDbContextAsync();
+        if (_context.Resources == null!)
         {
             return NotFound();
         }
@@ -47,10 +51,11 @@ public class ResourceController : ControllerBase
     }
 
     // PUT: api/Resource/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    // To protect from over posting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
     public async Task<IActionResult> PutResourceModel(string id, ResourceModel resourceModel)
     {
+        await using var _context = await _factory.CreateDbContextAsync();
         if (id != resourceModel.Id)
         {
             return BadRequest();
@@ -64,25 +69,24 @@ public class ResourceController : ControllerBase
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!ResourceModelExists(id))
+            if (!(_context.Resources?.Any(e => e.Id == id)).GetValueOrDefault())
             {
                 return NotFound();
             }
-            else
-            {
-                throw;
-            }
+
+            throw;
         }
 
         return NoContent();
     }
 
     // POST: api/Resource
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    // To protect from over posting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
-    public async Task<ActionResult<ResourceModel>> PostResourceModel(ResourceModel resourceModel)
+    public async Task<ActionResult<ResourceModel>> AddResource(ResourceModel resourceModel)
     {
-        if (_context.Resources == null)
+        await using var _context = await _factory.CreateDbContextAsync();
+        if (_context.Resources == null!)
         {
             return Problem("Entity set 'OaContext.Resources'  is null.");
         }
@@ -94,14 +98,12 @@ public class ResourceController : ControllerBase
         }
         catch (DbUpdateException)
         {
-            if (ResourceModelExists(resourceModel.Id))
+            if ((_context.Resources?.Any(e => e.Id == resourceModel.Id)).GetValueOrDefault())
             {
                 return Conflict();
             }
-            else
-            {
-                throw;
-            }
+
+            throw;
         }
 
         return CreatedAtAction("GetResourceModel", new { id = resourceModel.Id }, resourceModel);
@@ -111,7 +113,8 @@ public class ResourceController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteResourceModel(string id)
     {
-        if (_context.Resources == null)
+        await using var _context = await _factory.CreateDbContextAsync();
+        if (_context.Resources == null!)
         {
             return NotFound();
         }
@@ -126,10 +129,5 @@ public class ResourceController : ControllerBase
         await _context.SaveChangesAsync();
 
         return NoContent();
-    }
-
-    private bool ResourceModelExists(string id)
-    {
-        return (_context.Resources?.Any(e => e.Id == id)).GetValueOrDefault();
     }
 }

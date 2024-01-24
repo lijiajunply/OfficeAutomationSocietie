@@ -14,4 +14,6 @@ public class AnnouncementModel
     [Key]
     [Column(TypeName = "varchar(256)")]
     public string Id { get; set; }
+    
+    public override string ToString() => $"AnnouncementModel is {{Context={Context.Base64Encryption()},Time={Time.Base64Encryption()}}} Other is Private;";
 }

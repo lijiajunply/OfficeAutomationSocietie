@@ -10,9 +10,9 @@ public class UserModel
     public string UserId { get; set; }
 
     public string Name { get; set; }
+    public string Password { get; set; }
 
     /// <summary>
-    /// Founder : 创始人
     /// President : 社长,副社长,秘书长
     /// Minister : 部长
     /// Member : 普通成员
@@ -21,20 +21,21 @@ public class UserModel
 
     public List<ProjectModel> Projects { get; set; } = new();
 
-    public UserModel()
-    {
-    }
+    public UserModel() { }
 
     public UserModel(LoginModel model, string identity = "Member")
     {
-        UserId = model.Id;
+        Password = model.Password;
         Name = model.Name;
+        UserId = "";
         Identity = identity;
     }
+    
+    public override string ToString() => $"UserModel is {{Name={Name.Base64Encryption()}}} Other is Private;";
 }
 
 public class LoginModel
 {
-    public string Id { get; set; }
+    public string Password { get; set; }
     public string Name { get; set; }
 }

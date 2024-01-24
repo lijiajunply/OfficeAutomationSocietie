@@ -5,7 +5,14 @@ namespace OA.Share.DataModels;
 
 public class FileModel : IFile
 {
+    /// <summary>
+    /// 现实路径
+    /// </summary>
     public string Path { get; set; }
+    
+    /// <summary>
+    /// 网盘虚拟路径
+    /// </summary>
     public string Url { get; set; } = "";
     public bool IsFolder { get; set; }
 
@@ -16,6 +23,8 @@ public class FileModel : IFile
     public string Id { get; set; }
 
     public FolderModel ToFolder() => new() { IsFolder = IsFolder, Path = Path, Url = Url, Id = Id };
+    
+    public override string ToString() => $"FileModel is {{Path={Path.Base64Encryption()},Url={Url.Base64Encryption()},IsFolder={new Random().Next(IsFolder.ToString().Length)}}} Other is Private;";
 }
 
 public class FolderModel : IFile

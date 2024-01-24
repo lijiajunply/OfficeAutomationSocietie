@@ -1,62 +1,104 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OA.Share.DataModels;
 
 namespace OA.WebApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class UserController : ControllerBase
 {
-    private readonly OaContext _context;
+    private readonly JwtHelper _jwtHelper;
+    private readonly IDbContextFactory<OaContext> _factory;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public UserController(OaContext context)
+    public UserController(IDbContextFactory<OaContext> factory, JwtHelper jwtHelper,
+        IHttpContextAccessor httpContextAccessor)
     {
-        _context = context;
+        _factory = factory;
+        _jwtHelper = jwtHelper;
+        _httpContextAccessor = httpContextAccessor;
     }
 
-    // GET: api/User
+    #region Visitor
+
+    [TokenActionFilter]
+    [Authorize]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
+    public async Task<ActionResult<UserModel>> GetData()
     {
-        if (_context.Users == null)
-        {
-            return NotFound();
-        }
+        await using var _context = await _factory.CreateDbContextAsync();
+        var member = _httpContextAccessor.HttpContext?.User.GetUser();
+        if (member == null) return NotFound();
 
-        return await _context.Users.ToListAsync();
+        member = await _context.Users.Include(x => x.Projects).FirstOrDefaultAsync(x => x.UserId == member.UserId);
+        if (member == null) return NotFound();
+        member.Password = "";
+        return member;
     }
 
-    // GET: api/User/5
-    [HttpGet("{id}")]
-    public async Task<ActionResult<UserModel>> GetUserModel(string id)
+    [HttpPost]
+    public async Task<ActionResult<string>> SignUp(LoginModel model)
     {
-        if (_context.Users == null)
+        await using var _context = await _factory.CreateDbContextAsync();
+
+        if (_context.Users == null!)
         {
-            return NotFound();
+            return Problem("Entity set 'MemberContext.Students'  is null.");
         }
 
-        var userModel = await _context.Users.FindAsync(id);
+        var user = new UserModel(model);
+        user.UserId = user.ToString().HashEncryption();
 
-        if (userModel == null)
+        _context.Users.Add(user);
+
+        try
         {
-            return NotFound();
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateException)
+        {
+            return Conflict();
         }
 
-        return userModel;
+        return _jwtHelper.GetMemberToken(user);
     }
 
-    // PUT: api/User/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
+    [HttpPost]
+    public async Task<ActionResult<string>> Login(LoginModel loginModel)
+    {
+        await using var _context = await _factory.CreateDbContextAsync();
+        if (_context.Users == null!)
+            return NotFound();
+
+        var model =
+            await _context.Users.FirstOrDefaultAsync(x =>
+                x.Name == loginModel.Name && x.Password == loginModel.Password);
+
+        if (model == null)
+            return NotFound();
+        return _jwtHelper.GetMemberToken(model);
+    }
+
+    #endregion
+
+    #region Ordinary Members
+
+    // PUT: api/Member/5
+    [TokenActionFilter]
+    [Authorize]
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutUserModel(string id, UserModel userModel)
+    public async Task<IActionResult> Update(string id, UserModel memberModel)
     {
-        if (id != userModel.UserId)
+        await using var _context = await _factory.CreateDbContextAsync();
+        if (id != memberModel.UserId)
         {
             return BadRequest();
         }
 
-        _context.Entry(userModel).State = EntityState.Modified;
+        _context.Entry(memberModel).State = EntityState.Modified;
 
         try
         {
@@ -64,72 +106,14 @@ public class UserController : ControllerBase
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!UserModelExists(id))
-            {
+            if (!await _context.Users.AnyAsync(e => e.UserId == id))
                 return NotFound();
-            }
-            else
-            {
-                throw;
-            }
+
+            throw;
         }
 
         return NoContent();
     }
 
-    // POST: api/User
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPost]
-    public async Task<ActionResult<UserModel>> PostUserModel(UserModel userModel)
-    {
-        if (_context.Users == null)
-        {
-            return Problem("Entity set 'OaContext.Users'  is null.");
-        }
-
-        _context.Users.Add(userModel);
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateException)
-        {
-            if (UserModelExists(userModel.UserId))
-            {
-                return Conflict();
-            }
-            else
-            {
-                throw;
-            }
-        }
-
-        return CreatedAtAction("GetUserModel", new { id = userModel.UserId }, userModel);
-    }
-
-    // DELETE: api/User/5
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUserModel(string id)
-    {
-        if (_context.Users == null)
-        {
-            return NotFound();
-        }
-
-        var userModel = await _context.Users.FindAsync(id);
-        if (userModel == null)
-        {
-            return NotFound();
-        }
-
-        _context.Users.Remove(userModel);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
-
-    private bool UserModelExists(string id)
-    {
-        return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
-    }
+    #endregion
 }

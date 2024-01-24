@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -7,12 +8,18 @@ using Microsoft.IdentityModel.Tokens;
 using OA.Share.DataModels;
 using OA.WebApi;
 
-var builder = WebApplication.CreateBuilder(args);
-var configuration = builder.Configuration;
+var builder = WebApplication.CreateBuilder(args); // 初始化
+var configuration = builder.Configuration; // 读取配置文件
+
+#region 基本配置
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<HubOptions>(option => option.MaximumReceiveMessageSize = null);
+Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+#endregion
 
 #region 数据库依赖注入
 
@@ -87,7 +94,11 @@ using (var scope = app.Services.CreateScope())
 
 #endregion
 
+#region 完成
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
+#endregion

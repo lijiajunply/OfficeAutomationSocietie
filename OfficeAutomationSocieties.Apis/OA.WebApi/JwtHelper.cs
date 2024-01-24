@@ -26,8 +26,8 @@ public class JwtHelper
         };
 
         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]!));
-        const string algorithm = SecurityAlgorithms.HmacSha256;
-        var signingCredentials = new SigningCredentials(secretKey, algorithm);
+        
+        var signingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
         var securityToken = new JwtSecurityToken(
             claims: claims,

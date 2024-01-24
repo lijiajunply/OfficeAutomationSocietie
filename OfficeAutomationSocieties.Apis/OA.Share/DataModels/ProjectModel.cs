@@ -16,17 +16,20 @@ public class ProjectModel
     
     /// <summary>
     /// 示例:
-    /// User1 : 2023/01/01 - 2023/02/01 : 写代码
-    /// User2 : 2023/03/01 - 2023/04/01 : 写代码
+    /// User1 : 2023/01/01 - 2023/02/01 : 写代码 : E!@# (计划代号)
+    /// User2 : 2023/03/01 - 2023/04/01 : 写代码 : E!@# (计划代号)
     /// </summary>
     public string Gantt { get; set; }
+    
+    public override string ToString() => $"ProjectModel is {{Name={Name.Base64Encryption()}}} Other is Private;";
 }
 
 public class GanttModel
 {
-    public UserModel User { get; set; }
-    public DateTime StartTime { get; set; }
-    public DateTime EndTime { get; set; }
+    public string Id { get; set; }
+    public string User { get; set; }
+    public string StartTime { get; set; }
+    public string EndTime { get; set; }
     public string ToDo { get; set; }
 
     public GanttModel() { }
@@ -35,12 +38,15 @@ public class GanttModel
     {
         var gantt = s.Split(':');
         if(gantt.Length != 3)return;
-        User = new UserModel() { UserId = gantt[0] };
-        ToDo = gantt[^1];
+        User = gantt[0];
+        ToDo = gantt[2];
+        Id = gantt[^1];
         var time = gantt[1];
         var times = time.Split('-');
         if(times.Length != 2)return;
-        StartTime = DateTime.Parse(times[0]);
-        EndTime = DateTime.Parse(times[1]);
+        StartTime = times[0];
+        EndTime = times[0];
     }
+
+    public override string ToString() => $"{User}:{StartTime}-{EndTime}:{ToDo}:{Id}";
 }
