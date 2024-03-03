@@ -1,0 +1,16 @@
+<!--pages/signin/signin.wxml-->
+
+<!-- <scroll-view class="scrollarea" scroll-y type="list"> -->
+  <view class="container" style="align-items: center;height: 80vh;"> 
+    <view class="title">
+      OA
+    </view>
+    <view class="input-box">
+      <input class="input" id="username" placeholder="用户名"/>
+    </view>
+    <view class="input-box">
+      <input class="input" id="username" placeholder="密码"/>
+    </view>
+    <button class="input-buttom" type="primary" bindtap="login" model:loading="{{isLoading}}">登录</button>
+  </view>
+<!-- </scroll-view> -->

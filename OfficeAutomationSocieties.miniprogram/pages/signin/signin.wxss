@@ -1,0 +1,23 @@
+/* pages/signin/signin.wxss */
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.input {
+  /* margin-top: 30rpx;
+  margin-bottom: 30rpx; */
+  border-bottom: 1px solid gray;
+}
+
+.input-box {
+  padding: 30rpx;
+}
+
+.input-buttom {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}

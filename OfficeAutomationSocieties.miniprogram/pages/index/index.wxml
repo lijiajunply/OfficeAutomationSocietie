@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+  <view class="announcement-box" id="announcement-box">
+    <view class="announcement-title">公告</view>
+    <!-- 加载中元素 -->
+    <view class="announcement-loading" wx:if="{{isLoading}}">
+      Loading...
+    </view>
+    <!-- 列表 -->
+    <scroll-view class="announcement-list" scroll-y="true" type="list" wx:if="{{!isLoading}}">
+      <view class="announcement-item" wx:for="{{testarray}}">{{item}}</view>
+    </scroll-view>
+  </view>
+</view>

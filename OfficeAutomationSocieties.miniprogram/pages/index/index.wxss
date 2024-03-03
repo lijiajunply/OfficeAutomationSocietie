@@ -1,0 +1,40 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.announcement-box {
+  width: 80%;
+  height: 90%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.announcement-list {
+  height: 89%;
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.announcement-title {
+  width: 100%;
+  height: 11%;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 5px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid #ccc;
+}
+
+.announcement-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}

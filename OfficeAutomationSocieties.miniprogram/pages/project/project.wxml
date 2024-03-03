@@ -1,0 +1,5 @@
+<!--pages/project/project.wxml-->
+<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+  
+</view>
