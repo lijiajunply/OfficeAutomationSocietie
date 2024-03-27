@@ -1,5 +1,5 @@
 <!--pages/resourse/resourse.wxml-->
-<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
 <view class="container" style="height: 100vh;display: flex;flex-direction: column;">
   <view class="resourse-box" id="resourse-box">
     <view class="resourse-title">我的资源</view>

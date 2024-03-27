@@ -8,6 +8,11 @@
   text-align: center;
 }
 
+.login-box {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .input {
   /* margin-top: 30rpx;
   margin-bottom: 30rpx; */

@@ -1,5 +1,22 @@
 <!--pages/project/project.wxml-->
-<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<view class="container">
-  
-</view>
+<navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="project-container" type="list" scroll-y enable-flex>
+    <view class="project-item">
+      a
+    </view>
+    <view class="project-item">
+      a
+    </view>
+    <view class="project-item">
+      a
+    </view>
+    <view class="project-item">
+      a
+    </view>
+    <view class="project-item">
+      a
+    </view>
+    <view class="project-item">
+      a
+    </view>
+  </scroll-view>

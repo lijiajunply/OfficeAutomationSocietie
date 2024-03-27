@@ -1,18 +1,20 @@
 <!--pages/signin/signin.wxml-->
 
 <!-- <scroll-view class="scrollarea" scroll-y type="list"> -->
-<view class="container" style="align-items: center;height: 80vh;">
-  <form class="login-box" bindsubmit="login">
-    <view class="title">
-      OA
+<view class="container" style="align-items: center;padding: 200rpx 0;height: 80vh;">
+  <form bindsubmit="login">
+    <view class="login-box">
+      <view class="title">
+        OA
+      </view>
+      <view class="input-box">
+        <input class="input" name="username" placeholder="用户名" />
+      </view>
+      <view class="input-box">
+        <input class="input" name="password" placeholder="密码" />
+      </view>
+      <button class="input-buttom" type="primary" form-type="submit" model:loading="{{isLoading}}">登录</button>
     </view>
-    <view class="input-box">
-      <input class="input" name="username" placeholder="用户名" />
-    </view>
-    <view class="input-box">
-      <input class="input" name="password" placeholder="密码" />
-    </view>
-    <button class="input-buttom" type="primary" form-type="submit" model:loading="{{isLoading}}">登录</button>
   </form>
 </view>
 <!-- </scroll-view> -->

@@ -6,6 +6,15 @@
   </view>
   <scroll-view class="option-list" scroll-y="true" type="list">
     <view class="option">
+      <button class="option-button" plain bindtap="" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;">修改资料</button>
+    </view>
+    <view class="option">
+      <button class="option-button" plain bindtap="" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;">修改密码</button>
+    </view>
+    <view class="option">
+      <!-- blank -->
+    </view>
+    <view class="option">
       <!-- <button class="option" type="default" plain>设置</button> -->
       <button class="option-button" type="warn" plain bindtap="logout" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;">登出</button>
     </view>

@@ -1,1 +1,19 @@
 /* pages/project/project.wxss */
+.project-container {
+  /* height: 1000rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-item {
+  width: 500rpx;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
+  text-align: center;
+}

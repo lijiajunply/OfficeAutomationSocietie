@@ -41,14 +41,14 @@ Page({
     // )
 
     // 模拟异步操作
-    // setTimeout(() => {
-    //   this.setData({
-    //     isLoading: false
-    //   });
-    //   wx.switchTab({
-    //     url: '../index/index',
-    //   }).then(() => console.log("Login"));
-    // }, 500);
+    setTimeout(() => {
+      this.setData({
+        isLoading: false
+      });
+      wx.switchTab({
+        url: '../index/index',
+      }).then(() => console.log("Login"));
+    }, 500);
   },
 
   checkLoginStatus: function () {
