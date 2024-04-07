@@ -1,6 +1,6 @@
 <!--pages/resourse/resourse.wxml-->
 <navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
-<view class="container" style="height: 100vh;display: flex;flex-direction: column;">
+<scroll-view class="container" type="nested" scroll-y style="display: flex;flex-direction: column;">
   <view class="resourse-box" id="resourse-box">
     <view class="resourse-title">我的资源</view>
     <!-- 加载中元素 -->
@@ -8,9 +8,11 @@
       Loading...
     </view>
     <!-- 列表 -->
-    <scroll-view class="resourse-list" scroll-y="true" type="list" wx:if="{{!isLoading}}">
-      <view class="resourse-item" wx:for="{{testarray}}">{{item}}</view>
-    </scroll-view>
+    <view class="resourse-border">
+      <scroll-view class="resourse-list" scroll-y="true" type="list" wx:if="{{!isLoading}}">
+        <view class="resourse-item" wx:for="{{testarray}}">{{item}}</view>
+      </scroll-view>
+    </view>
   </view>
   <view class="resourse-box" id="resourse-box">
     <view class="resourse-title">社团资源</view>
@@ -19,8 +21,10 @@
       Loading...
     </view>
     <!-- 列表 -->
-    <scroll-view class="resourse-list" scroll-y="true" type="list" wx:if="{{!isLoading}}">
-      <view class="resourse-item" wx:for="{{testarray}}">{{item}}</view>
-    </scroll-view>
+    <view class="resourse-border">
+      <scroll-view class="resourse-list" scroll-y="true" type="list" wx:if="{{!isLoading}}">
+        <view class="resourse-item" wx:for="{{testarray}}">{{item}}</view>
+      </scroll-view>
+    </view>
   </view>
-</view>
+</scroll-view>
