@@ -1,26 +1,18 @@
-// pages/project/project.js
+// pages/project/project_detail/project_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    projects:[
-      {
-        id:"1"
-      },
-      {
-        id:"2"
-        
-      }
-    ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    console.log(options);
   },
 
   /**

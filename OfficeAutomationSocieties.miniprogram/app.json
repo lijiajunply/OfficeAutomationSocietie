@@ -4,7 +4,11 @@
     "pages/index/index",
     "pages/project/project",
     "pages/resourse/resourse",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/user_update/user_update",
+    "pages/user_passwd/user_passwd",
+    "pages/project/project_detail/project_detail",
+    "pages/project/project_join/project_join"
   ],
   "window": {
     "navigationBarTextStyle": "black",

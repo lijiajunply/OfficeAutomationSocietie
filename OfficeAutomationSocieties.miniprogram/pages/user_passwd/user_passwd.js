@@ -1,19 +1,11 @@
-// pages/project/project.js
+// pages/user_passwd/user_passwd.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    projects:[
-      {
-        id:"1"
-      },
-      {
-        id:"2"
-        
-      }
-    ]
+
   },
 
   /**

@@ -2,14 +2,20 @@
 <navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 <view class="container" style="height: 100vh;display: block;">
   <view>
-    <view class="username">用户名</view>
+    <view class="username">{{username}}</view>
+    <view class="org">组织：{{org}}</view>
   </view>
   <scroll-view class="option-list" scroll-y="true" type="list">
     <view class="option">
-      <button class="option-button" plain bindtap="" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;">修改资料</button>
+      <!-- <button class="option-button" plain bindtap="" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;"></button> -->
+      <navigator class="option-button" url="../user_update/user_update" open-type="navigate" hover-class="option-item-hover">
+        修改资料
+      </navigator>
     </view>
     <view class="option">
-      <button class="option-button" plain bindtap="" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;">修改密码</button>
+      <navigator class="option-button" url="../user_update/user_update" open-type="navigate" hover-class="option-item-hover">
+        修改密码
+      </navigator>
     </view>
     <view class="option">
       <!-- blank -->

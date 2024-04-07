@@ -1,19 +1,11 @@
-// pages/project/project.js
+// pages/project/project_join/project_join.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    projects:[
-      {
-        id:"1"
-      },
-      {
-        id:"2"
-        
-      }
-    ]
+
   },
 
   /**

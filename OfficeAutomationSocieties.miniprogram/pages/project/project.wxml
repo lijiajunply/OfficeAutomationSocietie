@@ -2,21 +2,9 @@
 <navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
 <scroll-view class="project-container" type="list" scroll-y enable-flex>
     <view class="project-item">
-      a
+      项目1
     </view>
-    <view class="project-item">
-      a
-    </view>
-    <view class="project-item">
-      a
-    </view>
-    <view class="project-item">
-      a
-    </view>
-    <view class="project-item">
-      a
-    </view>
-    <view class="project-item">
-      a
-    </view>
+    <navigator class="project-join" url="project_join/project_join" open-type="navigate" hover-class="option-item-hover">
+      +
+    </navigator>
   </scroll-view>

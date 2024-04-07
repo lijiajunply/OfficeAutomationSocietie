@@ -2,20 +2,20 @@
 <navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 <view class="container" style="align-items: center;">
   <view class="notice-container">
-    <!-- 加载中元素 -->
-    <view class="notice-loading" wx:if="{{isLoading}}">
-      Loading...
-    </view>
     <!-- 列表 -->
-    <swiper class="notice-list" wx:if="{{!isLoading}}">
-      <swiper-item class="swiper-item notice-item" wx:for="{{testarray}}">{{item}}</swiper-item>
+    <swiper class="notice-list">
+      <swiper-item class="swiper-item notice-item" wx:for="{{testarray}}">
+        <view class="swiper-view">
+          {{item}}
+        </view>
+      </swiper-item>
     </swiper>
   </view>
   <scroll-view class="option-container" type="list" scroll-y enable-flex>
     <navigator class="option-item" url="../project/project" open-type="navigate" hover-class="option-item-hover">
       项目
     </navigator>
-    <navigator class="option-item" url="../resource/resource" open-type="navigate" hover-class="option-item-hover">
+    <navigator class="option-item" url="../resourse/resourse" open-type="navigate" hover-class="option-item-hover">
       资源
     </navigator>
   </scroll-view>
