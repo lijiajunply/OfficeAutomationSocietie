@@ -1,20 +1,22 @@
 <!--index.wxml-->
-<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"/>
+<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF" />
 
 <view class="container">
   <view class="buttons">
     <navigator url="../project/project" open-type="navigate" class="button">我的项目</navigator>
-    <navigator url="../project/project" open-type="navigate" class="button">我的组织</navigator>
+    <navigator url="../organize/organize" open-type="navigate" class="button">我的组织</navigator>
   </view>
-    <scroll-view wx:if="{{task.length === 0}}">
-    当前无任务
-  </scroll-view>
-  <scroll-view wx:if="{{task.length != 0}}" class="tasks" wx:for="{{task}}">
-    <!-- 任务列表 -->
-    <view class="task">
-      <text class="task-name">
-      {{item}}
-      </text>
-    </view>
-  </scroll-view>
+  <text wx:if="{{task.length === 0}}">
+    当前无组织
+  </text>
+  <block wx:else>
+    <scroll-view class="tasks" wx:for="{{task}}" wx:key="toDo">
+      <!-- 任务列表 -->
+      <view class="task">
+        <text class="task-name">
+          {{item.toDo}}
+        </text>
+      </view>
+    </scroll-view>
+  </block>
 </view>

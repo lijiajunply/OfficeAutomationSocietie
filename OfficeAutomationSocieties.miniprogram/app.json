@@ -8,7 +8,8 @@
     "pages/user_update/user_update",
     "pages/user_passwd/user_passwd",
     "pages/project/project_detail/project_detail",
-    "pages/project/project_join/project_join"
+    "pages/project/project_join/project_join",
+    "pages/organize/organize"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,6 +1,6 @@
 // pages/signin/signin.js
 // const userhelper = require("/utils/helper/userhelper.js");
-const api = require("../../utils/api.js");
+import { apiurl } from "../../utils/api.js";
 const app = getApp()
 Page({
   data: {
@@ -29,7 +29,6 @@ Page({
         password: password
       }
     });
-    console.log("LoginModel:", this.data.loginmodel);
 
     // 加载条
     this.setData({
@@ -39,7 +38,7 @@ Page({
     // 异步获取登录信息
     wx.request({
       method: "POST",
-      url: api.apiurl + 'User/Login',
+      url: apiurl + 'User/Login',
       data: this.data.loginmodel,
       success: (data) => {
 
@@ -58,15 +57,12 @@ Page({
           header: {
             authorization: "Bearer " + data.data
           },
-          url: api.apiurl + 'User/GetData',
-          data: this.data.loginmodel
-          ,
+          url: apiurl + 'User/GetData',
           success: (userData) => {
             console.log(userData)
             if (userData.statusCode !== 200)
               return
-
-            console.log(userData.data)
+            app.globalData.user = userData.data
             // 模拟异步操作
             setTimeout(() => {
               wx.switchTab({
@@ -84,15 +80,45 @@ Page({
   async onload() {
     wx.hideTabBar();
 
+    const storage = await wx.getStorageSync("UserData")
     // 检查用户状态
-    if (await wx.getStorageSync("UserData")) {
+    if (storage != null) {
       console.log("用户已登录");
+      // 异步获取登录信息
       wx.request({
-        url: api.apiurl + 'User/GetData',
-        success: () => {
-          wx.switchTab({
-            url: '../index/index',
+        method: "POST",
+        url: apiurl + 'User/Login',
+        data: storage,
+        success: (data) => {
+
+          this.setData({
+            isLoading: false
           });
+
+          if (data.statusCode == 404)
+            return
+
+          app.globalData.jwt = data.data
+
+          wx.request({
+            method: "GET",
+            header: {
+              authorization: "Bearer " + app.globalData.jwt
+            },
+            url: apiurl + 'User/GetData',
+            success: (userData) => {
+              console.log(userData)
+              if (userData.statusCode !== 200)
+                return
+              app.globalData.user = userData.data
+              
+              setTimeout(() => {
+                wx.switchTab({
+                  url: '../index/index',
+                });
+              }, 500);
+            }
+          })
         }
       })
     }

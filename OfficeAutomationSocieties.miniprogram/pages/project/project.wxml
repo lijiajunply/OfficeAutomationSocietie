@@ -1,10 +1,7 @@
 <!--pages/project/project.wxml-->
 <navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="project-container" type="list" scroll-y enable-flex>
+<scroll-view class="project-container" type="list" scroll-y   enable-flex wx:for="{{projects}}">
     <view class="project-item">
-      项目1
+    {{item.name}}
     </view>
-    <navigator class="project-join" url="project_join/project_join" open-type="navigate" hover-class="option-item-hover">
-      +
-    </navigator>
   </scroll-view>

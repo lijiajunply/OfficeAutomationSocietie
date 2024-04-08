@@ -1,11 +1,9 @@
-// pages/project/project.js
-
 import { apiurl } from "../../utils/api.js";
 const app = getApp()
 
 Page({
   data: {
-    projects:[]
+    organizes:[]
   },
 
   /**
@@ -17,12 +15,12 @@ Page({
       header: {
         authorization: "Bearer " + app.globalData.jwt
       },
-      url: apiurl + 'Project/GetUserProjects',
-      success: (project) => {
-        if(project.statusCode !== 200)
+      url: apiurl + 'Organize/GetUserOrganizes',
+      success: (organize) => {
+        if(organize.statusCode !== 200)
           return
         this.setData({
-          projects : project.data
+          organizes : organize.data
         })
       }
     })
