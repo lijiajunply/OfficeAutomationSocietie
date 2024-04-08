@@ -1,5 +1,5 @@
 {
-  "appid": "touristappid",
+  "appid": "wxd929f5725efe31a2",
   "compileType": "miniprogram",
   "libVersion": "2.30.3",
   "packOptions": {
@@ -24,5 +24,8 @@
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
+  },
+  "simulatorPluginLibVersion": {
+    "wxextd2e17127608c3": "2.27.3"
   }
 }

@@ -8,7 +8,7 @@
         OA
       </view>
       <view class="input-box">
-        <input class="input" name="username" placeholder="用户名" />
+        <input class="input" name="username" placeholder="手机号码" />
       </view>
       <view class="input-box">
         <input class="input" name="password" placeholder="密码" />

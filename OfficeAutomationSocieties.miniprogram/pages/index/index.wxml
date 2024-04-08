@@ -1,22 +1,20 @@
 <!--index.wxml-->
-<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<view class="container" style="align-items: center;">
-  <view class="notice-container">
-    <!-- 列表 -->
-    <swiper class="notice-list">
-      <swiper-item class="swiper-item notice-item" wx:for="{{testarray}}">
-        <view class="swiper-view">
-          {{item}}
-        </view>
-      </swiper-item>
-    </swiper>
+<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"/>
+
+<view class="container">
+  <view class="buttons">
+    <navigator url="../project/project" open-type="navigate" class="button">我的项目</navigator>
+    <navigator url="../project/project" open-type="navigate" class="button">我的组织</navigator>
   </view>
-  <scroll-view class="option-container" type="list" scroll-y enable-flex>
-    <navigator class="option-item" url="../project/project" open-type="navigate" hover-class="option-item-hover">
-      项目
-    </navigator>
-    <navigator class="option-item" url="../resourse/resourse" open-type="navigate" hover-class="option-item-hover">
-      资源
-    </navigator>
+    <scroll-view wx:if="{{task.length === 0}}">
+    当前无任务
+  </scroll-view>
+  <scroll-view wx:if="{{task.length != 0}}" class="tasks" wx:for="{{task}}">
+    <!-- 任务列表 -->
+    <view class="task">
+      <text class="task-name">
+      {{item}}
+      </text>
+    </view>
   </scroll-view>
 </view>

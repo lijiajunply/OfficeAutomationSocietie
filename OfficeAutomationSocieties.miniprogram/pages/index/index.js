@@ -1,9 +1,9 @@
 // index.js
-
+const app = getApp()
 Page({
   data:{
     isLoading:true,
-    testarray:["a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a","a",]
+    task : []
   },
 
   // 页面加载函数
@@ -12,7 +12,8 @@ Page({
     wx.showTabBar(true);
     // 异步获取公告
     this.setData({
-      isLoading:true
+      isLoading:true,
+      task : app.globalData.user.taskNotes
     })
     setInterval(()=>{
       this.setData({

@@ -1,4 +1,4 @@
-const baseurl = "https://localhost/";
+const baseurl = "https://api.luckyfishes.com/";
 const apiurl = baseurl + "api/";
 const routes = {
   user: apiurl + "Member/",
