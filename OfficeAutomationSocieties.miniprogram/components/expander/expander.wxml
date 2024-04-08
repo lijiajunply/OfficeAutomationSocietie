@@ -1,0 +1,12 @@
+<view class="container">
+  <!-- 上半部分 -->
+  <view class="header">
+    <text class="title">{{content}}</text>
+    <button class="toggle-btn" bindtap="toggleContent">Toggle Content</button>
+  </view>
+
+  <!-- 下半部分 -->
+  <view class="content" wx:if="{{expanded}}">
+    
+  </view>
+</view>

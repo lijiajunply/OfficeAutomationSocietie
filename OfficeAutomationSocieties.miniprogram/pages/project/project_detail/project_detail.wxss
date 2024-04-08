@@ -1,1 +1,31 @@
 /* pages/project/project_detail/project_detail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.name {
+  width: 100%;
+  /* height: 11%; */
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 1px;
+}
+
+.introduce {
+  width: 100%;
+  /* height: 11%; */
+  font-weight: bold;
+  color: #333333;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid #ccc;
+}

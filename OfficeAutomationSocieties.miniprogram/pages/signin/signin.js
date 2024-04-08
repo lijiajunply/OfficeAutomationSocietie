@@ -59,7 +59,6 @@ Page({
           },
           url: apiurl + 'User/GetData',
           success: (userData) => {
-            console.log(userData)
             if (userData.statusCode !== 200)
               return
             app.globalData.user = userData.data
@@ -77,7 +76,7 @@ Page({
 
   },
 
-  async onload() {
+  async onReady() {
     wx.hideTabBar();
 
     const storage = await wx.getStorageSync("UserData")
@@ -95,9 +94,7 @@ Page({
             isLoading: false
           });
 
-          if (data.statusCode == 404)
-            return
-
+          if (data.statusCode == 404) return
           app.globalData.jwt = data.data
 
           wx.request({
@@ -107,7 +104,6 @@ Page({
             },
             url: apiurl + 'User/GetData',
             success: (userData) => {
-              console.log(userData)
               if (userData.statusCode !== 200)
                 return
               app.globalData.user = userData.data

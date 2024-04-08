@@ -13,18 +13,11 @@
 }
 
 .option-button {
-  height: 100rpx;
-  width: 100%;
-  font-weight: bold;
-  border-radius: 0%;
-  border-left: none;
-  border-right: none;
-  border-top: 1rpx solid black;
-  border-bottom: 1rpx solid black;
-
-  display: flex; 
-  justify-content: center; 
-  align-items: center;
+  background-color: #007aff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 .username {

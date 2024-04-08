@@ -3,26 +3,22 @@
 <view class="container" style="height: 100vh;display: block;">
   <view>
     <view class="username">{{username}}</view>
-    <view class="org">组织：{{org}}</view>
   </view>
   <scroll-view class="option-list" scroll-y="true" type="list">
     <view class="option">
-      <!-- <button class="option-button" plain bindtap="" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;"></button> -->
-      <navigator class="option-button" url="../user_update/user_update" open-type="navigate" hover-class="option-item-hover">
+      <navigator class="option-button" url="../user_update/user_update" open-type="navigate"
+        hover-class="option-item-hover">
         修改资料
       </navigator>
     </view>
     <view class="option">
-      <navigator class="option-button" url="../user_update/user_update" open-type="navigate" hover-class="option-item-hover">
+      <navigator class="option-button" url="../user_update/user_update" open-type="navigate"
+        hover-class="option-item-hover">
         修改密码
       </navigator>
     </view>
     <view class="option">
-      <!-- blank -->
-    </view>
-    <view class="option">
-      <!-- <button class="option" type="default" plain>设置</button> -->
-      <button class="option-button" type="warn" plain bindtap="logout" style="width: 100%;border-radius: 0%;border-left: none;border-right: none;">登出</button>
+      <button class="option-button" type="warn" plain bindtap="logout">登出</button>
     </view>
   </scroll-view>
 </view>

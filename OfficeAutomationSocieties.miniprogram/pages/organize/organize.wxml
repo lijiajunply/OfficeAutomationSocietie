@@ -1,11 +1,13 @@
 <navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
-<text wx:if="{{organizes.length === 0}}">
-  当前无任务
-</text>
-<block wx:else>
-  <scroll-view class="organize-container" type="list" scroll-y enable-flex wx:for="{{organizes}}" wx:key="{{name}}">
-    <view class="organize-item">
-      {{item.name}}
-    </view>
-  </scroll-view>
-</block>
+<view class="container">
+  <text wx:if="{{organizes.length === 0}}" >
+    当前无组织
+  </text>
+  <block wx:else>
+    <scroll-view class="organize-container" type="list" scroll-y enable-flex wx:for="{{organizes}}" wx:key="{{name}}">
+      <view class="organize-item">
+        {{item.name}}
+      </view>
+    </scroll-view>
+  </block>
+</view>

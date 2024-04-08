@@ -1,19 +1,19 @@
 // pages/user/user.js
+const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    username:"用户名",
-    org:"隶属组织"
+    username: ""
   },
 
-  logout:function(event) {
-    // 调用接口登出
+  onLoad() {
     
-    
-    // 返回登录界面
+    this.setData({
+      username: app.globalData.user.name
+    })
+  },
+
+  logout: function () {
+    wx.setStorageSync("UserData", null)
     wx.redirectTo({
       url: '/pages/signin/signin',
     })

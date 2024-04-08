@@ -1,0 +1,27 @@
+/* 在样式部分，定义控件的布局和样式 */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+}

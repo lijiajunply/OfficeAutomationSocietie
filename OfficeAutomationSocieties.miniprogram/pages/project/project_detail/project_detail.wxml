@@ -1,2 +1,16 @@
 <!--pages/project/project_detail/project_detail.wxml-->
-<text>pages/project/project_detail/project_detail.wxml</text>
+<navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view>
+  <view class="name">{{thisProject.name}}</view>
+  <view class="introduce">{{thisProject.introduce}}</view>
+</view>
+<view class="container">
+  <text wx:if="{{thisProject.ganttList.length === 0}}">
+    当前项目无任务
+  </text>
+  <block wx:else>
+    <scroll-view class="project-container" type="list" scroll-y enable-flex wx:for="{{thisProject.ganttList}}" wx:key="this">
+        {{item.toDo}}
+    </scroll-view>
+  </block>
+</view>
