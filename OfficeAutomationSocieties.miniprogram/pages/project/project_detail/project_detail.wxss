@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%); */
 }
 
 .name {
@@ -28,4 +29,32 @@
   padding-right: 15px;
   margin-bottom: 1px;
   border-bottom: 1px solid #ccc;
+}
+
+.tasks {
+  width: 80%;
+  max-height: 75vh;
+}
+
+.task {
+  /* background-color: #72b6ff; */
+  border: black solid 1px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+
+  /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%); */
+}
+
+.task-title {
+  width: 80%;
+  height: auto;
+  font-size: 14px;
+  margin-bottom: 10rpx;
+  /* background: linear-gradient(to right,#000,#fff); */
+}
+
+.task-name {
+  font-size: 14px;
 }

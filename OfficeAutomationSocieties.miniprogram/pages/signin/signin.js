@@ -1,6 +1,8 @@
 // pages/signin/signin.js
 // const userhelper = require("/utils/helper/userhelper.js");
-import { apiurl } from "../../utils/api.js";
+import {
+  apiurl
+} from "../../utils/api.js";
 const app = getApp()
 Page({
   data: {
@@ -107,7 +109,7 @@ Page({
               if (userData.statusCode !== 200)
                 return
               app.globalData.user = userData.data
-              
+
               setTimeout(() => {
                 wx.switchTab({
                   url: '../index/index',

@@ -13,12 +13,15 @@
     </text>
   </block>
   <block wx:else>
-    <scroll-view class="tasks" wx:for="{{task}}" wx:key="toDo">
+    <view class="task-title">
+      任务列表
+    </view>
+    <scroll-view class="tasks" scroll-y>
       <!-- 任务列表 -->
-      <view class="task">
-        <text class="task-name">
+      <view class="task" wx:for="{{task}}" wx:key="toDo">
+        <p class="task-name">
           {{item.toDo}}
-        </text>
+        </p>
       </view>
     </scroll-view>
   </block>

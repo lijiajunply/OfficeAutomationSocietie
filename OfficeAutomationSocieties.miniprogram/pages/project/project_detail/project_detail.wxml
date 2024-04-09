@@ -6,11 +6,16 @@
 </view>
 <view class="container">
   <text wx:if="{{thisProject.ganttList.length === 0}}">
-    当前项目无任务
+    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>
+    <text>
+      当前项目无任务
+    </text>
   </text>
   <block wx:else>
-    <scroll-view class="project-container" type="list" scroll-y enable-flex wx:for="{{thisProject.ganttList}}" wx:key="this">
-        {{item.toDo}}
+    <scroll-view class="tasks" type="list" scroll-y enable-flex>
+        <view class="task" wx:for="{{thisProject.ganttList}}" wx:key="this">
+          {{item.toDo}}
+        </view>
     </scroll-view>
   </block>
 </view>

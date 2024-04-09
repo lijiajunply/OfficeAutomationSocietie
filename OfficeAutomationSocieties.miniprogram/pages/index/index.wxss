@@ -22,14 +22,24 @@
 
 .tasks {
   width: 80%;
-  max-height: 80vh;
+  max-height: 63vh;
 }
 
 .task {
-  background-color: #f5f5f5;
+  background-color: #72b6ff;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+
+  /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%); */
+}
+
+.task-title {
+  width: 80%;
+  height: auto;
+  font-size: 14px;
+  margin-bottom: 10rpx;
+  /* background: linear-gradient(to right,#000,#fff); */
 }
 
 .task-name {
