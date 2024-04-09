@@ -3,21 +3,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   height: 100vh;
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
   margin-bottom: 20px;
 }
 
 .button {
   background-color: #007aff;
   color: #ffffff;
-  padding: 10px 20px;
+  padding: 20px 13%;
   border-radius: 5px;
 }
 

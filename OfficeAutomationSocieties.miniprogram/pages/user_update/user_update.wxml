@@ -1,2 +1,2 @@
 <!--pages/user_update/user_update.wxml-->
-<text>pages/user_update/user_update.wxml</text>
+<navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>

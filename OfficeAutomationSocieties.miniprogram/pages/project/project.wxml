@@ -1,9 +1,12 @@
 <!--pages/project/project.wxml-->
 <navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
 <view class="container">
-  <text wx:if="{{organizes.length === 0}}">
-    当前无项目
-  </text>
+  <block wx:if="{{organizes.length === 0}}">
+    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>
+    <text>
+      当前无项目
+    </text>
+  </block>
   <block wx:else>
     <scroll-view class="project-container" type="list" scroll-y enable-flex wx:for="{{projects}}" wx:key="this">
       <navigator url="../project/project_detail/project_detail?id={{item.id}}" class="project-item">

@@ -1,8 +1,11 @@
 <navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
 <view class="container">
-  <text wx:if="{{organizes.length === 0}}" >
-    当前无组织
-  </text>
+  <block wx:if="{{organizes.length === 0}}">
+    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>
+    <text>
+      当前未加入任何组织
+    </text>
+  </block>
   <block wx:else>
     <scroll-view class="organize-container" type="list" scroll-y enable-flex wx:for="{{organizes}}" wx:key="{{name}}">
       <view class="organize-item">
