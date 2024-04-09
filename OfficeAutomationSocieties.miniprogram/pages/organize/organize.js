@@ -5,10 +5,6 @@ Page({
   data: {
     organizes:[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad() {
     wx.request({
       method: "GET",
@@ -22,6 +18,7 @@ Page({
         this.setData({
           organizes : organize.data
         })
+        app.globalData.organizes = organize.data
       }
     })
   },

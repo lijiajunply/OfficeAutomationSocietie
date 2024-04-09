@@ -6,7 +6,7 @@
     <navigator url="../project/project" open-type="navigate" class="button">我的项目</navigator>
     <navigator url="../organize/organize" open-type="navigate" class="button">我的组织</navigator>
   </view>
-  <block wx:if="{{task.length === 0}}">
+  <block wx:if="{{taskCount === 0}}">
     <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>
     <text>
       当前无任务

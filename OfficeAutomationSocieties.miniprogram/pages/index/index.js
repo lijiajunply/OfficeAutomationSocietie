@@ -3,14 +3,38 @@ const app = getApp()
 Page({
   data:{
     isLoading:true,
-    task : []
+    task : [],
+    taskCount : 0,
+    doingTask : [],
+    timeOutTask : [],
+    willDoTask : []
   },
 
-  // 页面加载函数
   onShow() {
-    // 显示底部栏
     wx.showTabBar(true);
-    // 异步获取公告
+    
+    app.globalData.user.taskNotes.forEach(item => {
+      if(item.isDone !== true){
+        this.setData({
+          taskCount : this.data.taskCount++
+        })
+        const starkTime = new Date(item.startTime)
+        const endTime = new Date(item.endTime)
+        const now = new Date()
+        if(endTime < now){
+          this.data.timeOutTask.push(item)
+          return
+        }
+
+        if(starkTime > now){
+          this.data.willDoTask.push(item)
+          return
+        }
+
+        this.data.doingTask.push(item)
+      }
+    });
+
     this.setData({
       isLoading:true,
       task : app.globalData.user.taskNotes
@@ -19,6 +43,6 @@ Page({
       this.setData({
         isLoading:false
       })
-    },2000);
+    },300);
   }
 })
