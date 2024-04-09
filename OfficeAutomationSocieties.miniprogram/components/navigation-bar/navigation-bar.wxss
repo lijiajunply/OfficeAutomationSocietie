@@ -55,6 +55,7 @@
   -webkit-mask-size: cover;
   mask-size: cover;
   background-color: var(--weui-FG-0);
+  margin-top: 90%;
 }
 
 .weui-navigation-bar__center {
