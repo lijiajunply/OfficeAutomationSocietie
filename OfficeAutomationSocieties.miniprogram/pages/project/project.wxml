@@ -1,5 +1,5 @@
 <!--pages/project/project.wxml-->
-<navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar back="{{true}}" color="black" background="#FFF"></navigation-bar>
 <view class="container">
   <block wx:if="{{organizes.length === 0}}">
     <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>

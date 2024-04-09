@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF" />
+<navigation-bar back="{{false}}" color="black" background="#FFF" />
 
 <view class="container">
   <view class="buttons">

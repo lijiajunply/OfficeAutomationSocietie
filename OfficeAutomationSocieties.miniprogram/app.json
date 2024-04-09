@@ -31,7 +31,7 @@
       {
         "pagePath": "pages/index/index",
         "text": "主页",
-        "iconPath": "",
+        "iconPath": "assets/home.png",
         "selectedIconPath": ""
       },
       {

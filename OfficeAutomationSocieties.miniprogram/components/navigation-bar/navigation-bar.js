@@ -12,7 +12,7 @@ Component({
     },
     title: {
       type: String,
-      value: ''
+      value: 'OA酱'
     },
     background: {
       type: String,

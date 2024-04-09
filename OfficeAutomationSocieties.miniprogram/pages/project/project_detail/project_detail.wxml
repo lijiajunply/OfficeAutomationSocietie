@@ -1,5 +1,5 @@
 <!--pages/project/project_detail/project_detail.wxml-->
-<navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar back="{{true}}" color="black" background="#FFF"></navigation-bar>
 <view>
   <view class="name">{{thisProject.name}}</view>
   <view class="introduce">{{thisProject.introduce}}</view>
