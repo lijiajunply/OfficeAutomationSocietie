@@ -1,8 +1,15 @@
 <!--pages/user/user.wxml-->
-<navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<!-- <navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar> -->
 <view class="container" style="height: 100vh;display: block;">
   <view>
-    <view class="username">{{username}}</view>
+    <view class="username">
+      <view class="username-content">
+        <text class="username-text">
+          {{username}}
+        </text>
+        您已经来到OA酱{{dayNum}}天了
+      </view>
+    </view>
   </view>
   <scroll-view class="option-list" scroll-y="true" type="list">
     <view class="option">
