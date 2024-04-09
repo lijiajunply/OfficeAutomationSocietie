@@ -1,15 +1,38 @@
-/* pages/project/project_detail/project_detail.wxss */
-.container {
+/*分割线样式*/
+.divLine{
+  background: #E0E3DA;
+  width: 100%;
+  height: 5rpx;
+ }
+
+.buttons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%); */
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+
+.button {
+  background-color: #007aff;
+  color: #ffffff;
+  padding: 10px 13%;
+  border-radius: 5px;
+}
+
+.button-delete {
+  border-color: #c04851;
+  border-style: solid;
+  border-width: thin;
+  color: #c04851;
+  text-align: center;
+  padding: 10px 13%;
+  border-radius: 5px;
 }
 
 .name {
   width: 100%;
-  /* height: 11%; */
   font-size: 24px;
   font-weight: bold;
   color: #333333;
@@ -21,24 +44,19 @@
 
 .introduce {
   width: 100%;
-  /* height: 11%; */
   font-weight: bold;
   color: #333333;
   padding-bottom: 10px;
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 1px;
-  border-bottom: 1px solid #ccc;
-}
-
-.tasks {
-  width: 80%;
-  max-height: 75vh;
 }
 
 .task {
   /* background-color: #72b6ff; */
-  border: black solid 1px;
+  background-color: #e0e0e0;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -48,7 +66,6 @@
 }
 
 .task-title {
-  width: 80%;
   height: auto;
   font-size: 14px;
   margin-bottom: 10rpx;

@@ -4,18 +4,43 @@
   <view class="name">{{thisProject.name}}</view>
   <view class="introduce">{{thisProject.introduce}}</view>
 </view>
-<view class="container">
+<view class="divLine"></view>
+<view class="buttons">
+  <view class="button">
+    添加任务
+  </view>
+  <view class="button-delete">
+    退出项目
+  </view>
+</view>
+<view class="divLine"></view>
+<view>
   <text wx:if="{{thisProject.ganttList.length === 0}}">
-    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>
+    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill" />
     <text>
       当前项目无任务
     </text>
   </text>
   <block wx:else>
-    <scroll-view class="tasks" type="list" scroll-y enable-flex>
-        <view class="task" wx:for="{{thisProject.ganttList}}" wx:key="this">
-          {{item.toDo}}
-        </view>
+    <scroll-view type="list" scroll-y enable-flex>
+      <view class="task" wx:for="{{thisProject.ganttList}}" wx:key="this">
+        {{item.toDo}}
+      </view>
+    </scroll-view>
+  </block>
+</view>
+<view>
+  <text wx:if="{{thisProject.ganttList.length === 0}}">
+    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill" />
+    <text>
+      当前项目无任务
+    </text>
+  </text>
+  <block wx:else>
+    <scroll-view type="list" scroll-y enable-flex>
+      <view class="task" wx:for="{{members}}" wx:key="this">
+        {{item.name}}
+      </view>
     </scroll-view>
   </block>
 </view>
