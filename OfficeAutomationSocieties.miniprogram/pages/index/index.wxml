@@ -18,9 +18,28 @@
     </view>
     <scroll-view class="tasks" scroll-y>
       <!-- 任务列表 -->
-      <view class="task" wx:for="{{task}}" wx:key="toDo">
+      <view class="task task-timeout" wx:for="{{timeOutTask}}">
         <p class="task-name">
           {{item.toDo}}
+        </p>
+        <p class="task-date">
+          {{item.endTime}}
+        </p>
+      </view>
+      <view class="task task-doing" wx:for="{{doingTask}}">
+        <p class="task-name">
+          {{item.toDo}}
+        </p>
+        <p class="task-date">
+          {{item.endTime}}
+        </p>
+      </view>
+      <view class="task task-todo" wx:for="{{willDoTask}}">
+        <p class="task-name">
+          {{item.toDo}}
+        </p>
+        <p class="task-date">
+          {{item.endTime}}
         </p>
       </view>
     </scroll-view>
