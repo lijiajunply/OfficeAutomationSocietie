@@ -37,7 +37,7 @@
       {
         "pagePath": "pages/user/user",
         "text": "我的",
-        "iconPath": "",
+        "iconPath": "assets/user.png",
         "selectedIconPath": ""
       }
     ]
