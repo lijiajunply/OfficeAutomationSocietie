@@ -23,7 +23,12 @@
           {{item.toDo}}
         </p>
         <p class="task-date">
-          {{item.endTime}}
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
         </p>
       </view>
       <view class="task task-doing" wx:for="{{doingTask}}">
@@ -31,16 +36,26 @@
           {{item.toDo}}
         </p>
         <p class="task-date">
-          {{item.endTime}}
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
         </p>
       </view>
       <view class="task task-todo" wx:for="{{willDoTask}}">
         <p class="task-name">
           {{item.toDo}}
         </p>
-        <p class="task-date">
-          {{item.endTime}}
-        </p>
+        <view class="task-date">
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
+        </view>
       </view>
     </scroll-view>
   </block>

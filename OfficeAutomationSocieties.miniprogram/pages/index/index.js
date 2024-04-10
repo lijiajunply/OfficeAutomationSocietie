@@ -20,6 +20,9 @@ Page({
         const starkTime = new Date(item.startTime)
         const endTime = new Date(item.endTime)
         const now = new Date()
+
+        item.endTimeFmt = this.formatDate(item.endTime);
+        
         if (endTime < now) {
           this.data.timeOutTask.push(item)
           return
