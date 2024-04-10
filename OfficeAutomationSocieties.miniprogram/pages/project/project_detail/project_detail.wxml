@@ -11,7 +11,7 @@
   <navigator url="../project_addtask/project_addtask?id={{thisProject.id}}" class="button">
     添加任务
   </navigator>
-  <view class="button-delete">
+  <view class="button-delete" bindtap="quitProject">
     退出项目
   </view>
 </view>

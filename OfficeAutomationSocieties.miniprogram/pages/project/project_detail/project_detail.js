@@ -14,6 +14,15 @@ Page({
   },
   onLoad(options) {
     const a = app.globalData.projects.find(item => item.id === options.id)
+
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}年${month}月${day}日`;
+    }
+
     if (a == null) {
       console.log("有问题", app.globalData.projects, options.id)
       return
@@ -28,7 +37,7 @@ Page({
         const endTime = new Date(item.endTime)
         const now = new Date()
 
-        item.endTimeFmt = this.formatDate(item.endTime);
+        item.endTimeFmt = formatDate(item.endTime);
         
         if (endTime < now) {
           this.data.timeOutTask.push(item)
@@ -74,11 +83,8 @@ Page({
       url: '../project_addtask/project_addtask' //?id=' + this.data.thisProject.id,
     })
   },
-  formatDate(dateStr) {
-    const date = new Date(dateStr);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${year}年${month}月${day}日`;
+  quitProject(){
+    console.log("quit")
+    wx.navigateBack()
   }
 })
