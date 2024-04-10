@@ -25,6 +25,10 @@
       "sdkVersionEnd": "15.255.255"
     }
   },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",

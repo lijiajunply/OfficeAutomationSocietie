@@ -10,7 +10,22 @@ Page({
     members: [],
     doingTask: [],
     timeOutTask: [],
-    willDoTask: []
+    willDoTask: [],
+    isDigShow : false,
+    isAddShow : false,
+    buttons : [{text : "取消"},{text : "确认"}],
+    halfButtons: [
+      {
+          type: 'default',
+          text: '取消',
+          value: 0
+      },
+      {
+          type: 'primary',
+          text: '确认',
+          value: 1
+      }
+  ]
   },
   onLoad(options) {
     const a = app.globalData.projects.find(item => item.id === options.id)
@@ -78,13 +93,41 @@ Page({
     })
   },
   addTask() {
-    console.log("ToAddTask")
-    wx.navigateTo({
-      url: '../project_addtask/project_addtask' //?id=' + this.data.thisProject.id,
+    this.setData({
+      isAddShow : true
     })
   },
   quitProject(){
-    console.log("quit")
-    wx.navigateBack()
+    this.setData({
+      isDigShow : true
+    })
+  },
+  buttontap(detail){
+    console.log(detail.detail)
+    if(detail.detail.index === 0){
+      this.setData({
+        isDigShow : false
+      })
+      return
+    }
+
+    wx.request({
+      method: "GET",
+      header: {
+        authorization: "Bearer " + app.globalData.jwt
+      },
+      url: apiurl + 'Project/QuitProject/' + this.data.thisProject.id,
+      success: (data) => {
+        if (data.statusCode !== 200) return
+        const index = app.globalData.projects.indexOf(this.data.thisProject);
+        app.globalData.projects.splice(index, 1)
+        wx.navigateBack()
+      }
+    })
+
+    this.setData({
+      isDigShow : false
+    })
+
   }
 })
