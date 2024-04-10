@@ -1,19 +1,21 @@
-import { apiurl } from "../../../utils/api.js";
+import {
+  apiurl
+} from "../../../utils/api.js";
 const app = getApp()
 
 Page({
   data: {
     thisProject: {},
-    members : []
+    members: []
   },
   onLoad(options) {
     const a = app.globalData.projects.find(item => item.id === options.id)
-    if(a == null){
-      console.log("有问题",app.globalData.projects,options.id)
+    if (a == null) {
+      console.log("有问题", app.globalData.projects, options.id)
       return
     }
     this.setData({
-      thisProject : a
+      thisProject: a
     })
 
     wx.request({
@@ -21,13 +23,19 @@ Page({
       header: {
         authorization: "Bearer " + app.globalData.jwt
       },
-      url: apiurl + 'Project/GetProjectMember/'+options.id,
+      url: apiurl + 'Project/GetProjectMember/' + options.id,
       success: (member) => {
-        if(member.statusCode !== 200) return
+        if (member.statusCode !== 200) return
         this.setData({
-          members : member.data
+          members: member.data
         })
       }
+    })
+  },
+  addTask() {
+    console.log("ToAddTask")
+    wx.navigateTo({
+      url: '../project_addtask/project_addtask'//?id=' + this.data.thisProject.id,
     })
   }
 })

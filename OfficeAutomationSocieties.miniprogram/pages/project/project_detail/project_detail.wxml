@@ -6,9 +6,12 @@
 </view>
 <view class="divLine"></view>
 <view class="buttons">
-  <view class="button">
+  <!-- <view class="button">
     添加任务
-  </view>
+  </view> -->
+  <navigator url="../project_addtask/project_addtask?id={{thisProject.id}}" class="button">
+    添加任务
+  </navigator>
   <view class="button-delete">
     退出项目
   </view>
