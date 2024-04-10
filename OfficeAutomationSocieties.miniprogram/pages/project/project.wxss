@@ -15,11 +15,11 @@
 
 .project-item {
   width: 500rpx;
+  font-size: large;
+  height: 18vh;
   padding: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-  /* border: 1px solid #e0e0e0; */
   border-radius: 5px;
-  background-color: #e0e0e0;
-  text-align: center;
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
 }
