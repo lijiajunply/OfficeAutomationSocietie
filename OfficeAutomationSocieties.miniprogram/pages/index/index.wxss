@@ -21,27 +21,60 @@
 }
 
 .tasks {
-  width: 80%;
   max-height: 63vh;
 }
 
 .task {
-  background-color: #72b6ff;
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  /* margin-bottom: 10px; */
+  border-left: solid;
 
+  /* background-color: #72b6ff; */
+  /* border-radius: 5px; */
   /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%); */
 }
 
 .task-title {
-  width: 80%;
   height: auto;
   font-size: 14px;
   margin-bottom: 10rpx;
+  /* border-left: #72b6ff solid; */
   /* background: linear-gradient(to right,#000,#fff); */
 }
 
 .task-name {
   font-size: 14px;
+  /* float: left; */
+}
+
+.task-outline {
+  width: 85%;
+  padding: 20rpx;
+  border: #f0f0f0 solid 1px;
+  border-radius: 10px;
+  background-color: rgba(240, 240, 240, 0.5);
+  /* opacity: 50%; */
+}
+
+.task-date {
+  text-align: right;
+  float: right;
+  color: #747474;
+  font-size: 0.8rem;
+}
+
+.task-date-text {
+  font-size: 0.6rem;
+}
+
+.task-timeout {
+  border-color: #ff7272;
+}
+
+.task-doing {
+  border-color: #72b6ff;
+}
+
+.task-todo {
+  border-color: #4cff64;
 }
