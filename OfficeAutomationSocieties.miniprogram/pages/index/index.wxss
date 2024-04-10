@@ -21,7 +21,6 @@
 }
 
 .tasks {
-  width: 90%;
   max-height: 63vh;
 }
 
@@ -36,7 +35,6 @@
 }
 
 .task-title {
-  width: 90%;
   height: auto;
   font-size: 14px;
   margin-bottom: 10rpx;
@@ -49,10 +47,20 @@
   /* float: left; */
 }
 
+.task-outline {
+  width: 85%;
+  padding: 20rpx;
+  border: #f0f0f0 solid 1px;
+  border-radius: 10px;
+  background-color: rgba(240, 240, 240, 0.5);
+  /* opacity: 50%; */
+}
+
 .task-date {
   text-align: right;
   float: right;
   color: #747474;
+  font-size: 0.8rem;
 }
 
 .task-date-text {
