@@ -4,7 +4,6 @@
   <view class="name">{{thisProject.name}}</view>
   <view class="introduce">{{thisProject.introduce}}</view>
 </view>
-<view class="divLine"></view>
 <view class="buttons">
   <!-- <view class="button">
     添加任务
@@ -17,7 +16,7 @@
   </view>
 </view>
 <view class="divLine"></view>
-<view>
+<view class="task-outline">
   <text wx:if="{{thisProject.ganttList.length === 0}}">
     <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill" />
     <text>
@@ -25,25 +24,56 @@
     </text>
   </text>
   <block wx:else>
-    <scroll-view type="list" scroll-y enable-flex>
-      <view class="task" wx:for="{{thisProject.ganttList}}" wx:key="this">
-        {{item.toDo}}
+    <scroll-view class="tasks" scroll-y refresher-enable>
+      <view class="task-title">当前任务</view>
+      <!-- 任务列表 -->
+      <view class="task task-timeout" wx:for="{{timeOutTask}}">
+        <p class="task-name">
+          {{item.toDo}}
+        </p>
+        <p class="task-date">
+        <p class="task-date-text">
+          截止至
+        </p>
+        <p>
+          {{item.endTimeFmt}}
+        </p>
+        </p>
+      </view>
+      <view class="task task-doing" wx:for="{{doingTask}}">
+        <p class="task-name">
+          {{item.toDo}}
+        </p>
+        <p class="task-date">
+        <p class="task-date-text">
+          截止至
+        </p>
+        <p>
+          {{item.endTimeFmt}}
+        </p>
+        </p>
+      </view>
+      <view class="task task-todo" wx:for="{{willDoTask}}">
+        <p class="task-name">
+          {{item.toDo}}
+        </p>
+        <view class="task-date">
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
+        </view>
       </view>
     </scroll-view>
   </block>
 </view>
-<view>
-  <text wx:if="{{thisProject.ganttList.length === 0}}">
-    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill" />
-    <text>
-      当前项目无任务
-    </text>
-  </text>
-  <block wx:else>
-    <scroll-view type="list" scroll-y enable-flex>
-      <view class="task" wx:for="{{members}}" wx:key="this">
-        {{item.name}}
+<view class="task-outline">
+    <scroll-view class="tasks" type="list" scroll-y enable-flex>
+      <view class="task-title">项目人员</view>
+      <view class="member-bottom" wx:for="{{members}}" wx:key="this">
+        · {{item.name}}
       </view>
     </scroll-view>
-  </block>
 </view>
