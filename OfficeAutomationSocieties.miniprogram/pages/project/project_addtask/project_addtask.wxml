@@ -3,14 +3,31 @@
 <view class="container">
   <view class="login-box">
     <view class="title">
-      OA
+      任务描述
     </view>
     <view class="input-box">
-      <input class="input" name="username" placeholder="手机号码" />
+      <textarea class="input" auto-height model:value="{{describtion}}"/>
+    </view>
+    <view class="title">
+      起始日期
     </view>
     <view class="input-box">
-      <input class="input" name="password" placeholder="密码" />
+      <picker class="picker" mode="date" model:value="{{starttime}}">
+        <p>
+          {{starttime?starttime:"-"}}
+        </p>
+        </picker>
     </view>
-    <button class="input-buttom" type="primary" form-type="submit" model:loading="{{isLoading}}">登录</button>
+    <view class="title">
+      结束日期
+    </view>
+    <view class="input-box">
+      <picker class="picker" mode="date" model:value="{{endtime}}">
+        <p>
+          {{endtime?endtime:"-"}}
+        </p>
+      </picker>
+    </view>
+    <button class="input-buttom" type="primary" bindtap="addtask">确定</button>
   </view>
 </view>

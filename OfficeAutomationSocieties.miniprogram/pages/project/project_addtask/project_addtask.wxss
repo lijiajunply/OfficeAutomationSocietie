@@ -7,11 +7,10 @@
 }
 
 .title {
-  font-size: 24px;
   font-weight: bold;
   color: #333333;
-  margin-bottom: 10px;
-  text-align: center;
+  /* margin-bottom: 10px; */
+  /* text-align: center; */
 }
 
 .login-box {
@@ -23,10 +22,21 @@
   /* margin-top: 30rpx;
   margin-bottom: 30rpx; */
   border-bottom: 1px solid gray;
+  width: 100%;
 }
 
+.picker {
+  border: 1px solid gray;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+/* 
+.picker p {
+  
+} */
+
 .input-box {
-  padding: 30rpx;
+  padding: 30rpx 0 30rpx 0;
 }
 
 .input-buttom {

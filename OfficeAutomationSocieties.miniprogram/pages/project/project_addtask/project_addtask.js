@@ -1,18 +1,28 @@
 // pages/project/project_addtask/project_addtask.js
+import {
+  apiurl
+} from "../../../utils/api.js";
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    projectid: "",
+    describtion: "",
+    starttime: "",
+    endtime: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.setData({
+      projectid: options.id
+    })
   },
 
   /**
@@ -62,5 +72,46 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  addtask() {
+    console.log(
+      "ProjectID", this.data.projectid, "\n",
+      "Describtion:", this.data.describtion, "\n",
+      "StartTime:", this.data.starttime, "\n",
+      "EndTime:", this.data.endtime
+    );
+
+    if(this.data.describtion.length == 0){
+      wx.showModal({
+        title: '',
+        content: '',
+        complete: (res) => {
+          if (res.cancel) {
+            
+          }
+      
+          if (res.confirm) {
+            
+          }
+        }
+      })
+    }
+
+    wx.request({
+      method: "PUT",
+      header: {
+        authorization: "Bearer " + app.globalData.jwt
+      },
+      url: apiurl + 'Project/AddGantt/' + this.data.projectid,
+      data: {
+        startTime: this.data.starttime,
+        endTime: this.data.endtime,
+        toDo: this.data.describtion
+      },
+      success: (gantt) => {
+
+      }
+    })
   }
 })
