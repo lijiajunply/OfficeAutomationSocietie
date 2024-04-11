@@ -6,26 +6,29 @@ const app = getApp()
 Page({
   data: {
     thisProject: {},
-    taskCount : 0,
+    taskCount: 0,
     members: [],
     doingTask: [],
     timeOutTask: [],
     willDoTask: [],
-    isDigShow : false,
-    isAddShow : false,
-    buttons : [{text : "取消"},{text : "确认"}],
-    halfButtons: [
-      {
-          type: 'default',
-          text: '取消',
-          value: 0
+    isDigShow: false,
+    isAddShow: false,
+    buttons: [{
+      text: "取消"
+    }, {
+      text: "确认"
+    }],
+    halfButtons: [{
+        type: 'default',
+        text: '取消',
+        value: 0
       },
       {
-          type: 'primary',
-          text: '确认',
-          value: 1
-      }
-  ]
+        type: 'primary',
+        text: '确认',
+        value: 1
+      },
+    ]
   },
   onLoad(options) {
     const a = app.globalData.projects.find(item => item.id === options.id)
@@ -53,7 +56,7 @@ Page({
         const now = new Date()
 
         item.endTimeFmt = formatDate(item.endTime);
-        
+
         if (endTime < now) {
           this.data.timeOutTask.push(item)
           return
@@ -94,19 +97,19 @@ Page({
   },
   addTask() {
     this.setData({
-      isAddShow : true
+      isAddShow: true
     })
   },
-  quitProject(){
+  quitProject() {
     this.setData({
-      isDigShow : true
+      isDigShow: true
     })
   },
-  buttontap(detail){
+  buttontap(detail) {
     console.log(detail.detail)
-    if(detail.detail.index === 0){
+    if (detail.detail.index === 0) {
       this.setData({
-        isDigShow : false
+        isDigShow: false
       })
       return
     }
@@ -126,7 +129,7 @@ Page({
     })
 
     this.setData({
-      isDigShow : false
+      isDigShow: false
     })
 
   }

@@ -5,7 +5,10 @@ Page({
     taskCount: 0,
     doingTask: [],
     timeOutTask: [],
-    willDoTask: []
+    willDoTask: [],
+    slideviewButtons: [{
+      text : "详情"
+    }]
   },
 
   onLoad() {

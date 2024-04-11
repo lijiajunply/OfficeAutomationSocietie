@@ -5,7 +5,6 @@
     "pages/project/project",
     "pages/user/user",
     "pages/user_update/user_update",
-    "pages/user_passwd/user_passwd",
     "pages/project/project_detail/project_detail",
     "pages/organize/organize",
     "pages/project/project_addtask/project_addtask",

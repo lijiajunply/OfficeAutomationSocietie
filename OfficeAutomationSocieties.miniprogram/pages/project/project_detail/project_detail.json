@@ -5,6 +5,7 @@
     "mp-cell": "weui-miniprogram/cell/cell",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
-    "mp-form": "weui-miniprogram/form/form"
+    "mp-form": "weui-miniprogram/form/form",
+    "mp-slideview": "weui-miniprogram/slideview/slideview"
   }
 }

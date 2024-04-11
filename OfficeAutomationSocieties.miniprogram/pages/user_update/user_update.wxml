@@ -1,2 +1,17 @@
 <!--pages/user_update/user_update.wxml-->
 <navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<mp-form-page title="更改用户数据" >
+  <mp-form id="form" models="{{user}}" rules="{{rules}}">
+    <mp-cells>
+      <mp-cell title="名称">
+        <input value="{{user.name}}"></input>
+      </mp-cell>
+      <mp-cell title="手机号">
+        <input value="{{user.phoneNum}}"></input>
+      </mp-cell>
+  </mp-cells>
+  </mp-form>
+  <view slot="button">
+      <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+</mp-form-page>

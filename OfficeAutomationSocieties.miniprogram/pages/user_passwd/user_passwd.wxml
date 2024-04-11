@@ -1,2 +1,0 @@
-<!--pages/user_passwd/user_passwd.wxml-->
-<navigation-bar title="OA" back="{{true}}" color="black" background="#FFF"></navigation-bar>

@@ -7,7 +7,7 @@
     </text>
   </block>
   <block wx:else>
-    <scroll-view class="organize-container" type="list" scroll-y enable-flex wx:for="{{organizes}}" wx:key="{{name}}">
+    <scroll-view class="organize-container" type="list" scroll-y enable-flex wx:for="{{organizes}}" wx:key="this">
       <navigator url="../organize/organize_detail/organize_detail?id={{item.id}}" class="organize-item">
         {{item.name}}
       </navigator>

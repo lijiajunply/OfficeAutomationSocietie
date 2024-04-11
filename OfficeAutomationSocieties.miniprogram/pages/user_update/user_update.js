@@ -1,66 +1,77 @@
-// pages/user_update/user_update.js
+import {
+  apiurl
+} from "../../utils/api.js";
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    user: {},
+    rules: [
+      {
+        name: "name",
+        rules: {
+          required: true,
+          maxlength: 32
+        }
+      },
+      {
+        name: "registrationTime",
+        rules: {}
+      },
+      {
+        name: "userId",
+        rules: {}
+      },
+      {
+        name: "phoneNum",
+        rules: {
+          required: true,
+          maxlength: 13
+        }
+      },
+      {
+        name: "password",
+        rules: {}
+      },
+      {
+        name: "organizes",
+        rules: {}
+      },
+      {
+        name: "projects",
+        rules: {}
+      },
+      {
+        name: "taskNotes",
+        rules: {}
+      }
+    ]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    this.setData({
+      user: app.globalData.user
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  submitForm() {
+    if (this.data.user.name === '' || this.data.user.phoneNum === '') return
+    if (this.data.user.name === app.globalData.user.name && this.data.user.phoneNum === app.globalData.user.name) {
+      wx.navigateBack()
+      return
+    }
+    wx.request({
+      method: "POST",
+      header: {
+        authorization: "Bearer " + app.globalData.jwt
+      },
+      url: apiurl + 'User/Update',
+      data: this.data.user,
+      success: (userData) => {
+        if (userData.statusCode !== 200)
+          return
+        app.globalData.user = this.data.user
+        wx.navigateBack()
+      }
+    })
   }
 })
