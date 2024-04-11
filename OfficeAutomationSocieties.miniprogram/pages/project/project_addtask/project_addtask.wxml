@@ -1,33 +1,29 @@
 <!--pages/project/project_addtask/project_addtask.wxml-->
 <navigation-bar back="{{true}}" color="black" background="#FFF"></navigation-bar>
-<view class="container">
-  <view class="login-box">
-    <view class="title">
-      任务描述
-    </view>
-    <view class="input-box">
-      <textarea class="input" auto-height model:value="{{describtion}}"/>
-    </view>
-    <view class="title">
-      起始日期
-    </view>
-    <view class="input-box">
-      <picker class="picker" mode="date" model:value="{{starttime}}">
-        <p>
-          {{starttime?starttime:"-"}}
-        </p>
+<mp-form-page title="添加任务" >
+
+  <mp-form id="form">
+    <mp-cells>
+      <mp-cell title="任务名称">
+        <input value="{{task.toDo}}"></input>
+      </mp-cell>
+      <mp-cell title="起始时间">
+        <picker mode="date" value="{{task.starttime}}">
+          <p>
+            {{task.starttime?task.starttime:"-"}}
+          </p>
         </picker>
-    </view>
-    <view class="title">
-      结束日期
-    </view>
-    <view class="input-box">
-      <picker class="picker" mode="date" model:value="{{endtime}}">
-        <p>
-          {{endtime?endtime:"-"}}
-        </p>
-      </picker>
-    </view>
-    <button class="input-buttom" type="primary" bindtap="addtask">确定</button>
+      </mp-cell>
+      <mp-cell title="结束时间">
+        <picker mode="date" value="{{task.endtime}}">
+          <p>
+            {{task.endtime?task.endtime:"-"}}
+          </p>
+        </picker>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+  <view slot="button">
+    <button class="weui-btn" type="primary" bindtap="submitTask">确定</button>
   </view>
-</view>
+</mp-form-page>

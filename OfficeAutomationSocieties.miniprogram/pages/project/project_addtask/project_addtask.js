@@ -11,9 +11,12 @@ Page({
    */
   data: {
     projectid: "",
-    describtion: "",
-    starttime: "",
-    endtime: ""
+    task: {
+      toDo: "",
+      starttime: "",
+      endtime: ""
+    }
+
   },
 
   /**
@@ -74,29 +77,14 @@ Page({
 
   },
 
-  addtask() {
+  submitTask() {
     console.log(
       "ProjectID", this.data.projectid, "\n",
       "Describtion:", this.data.describtion, "\n",
       "StartTime:", this.data.starttime, "\n",
       "EndTime:", this.data.endtime
     );
-
-    if(this.data.describtion.length == 0){
-      wx.showModal({
-        title: '',
-        content: '',
-        complete: (res) => {
-          if (res.cancel) {
-            
-          }
-      
-          if (res.confirm) {
-            
-          }
-        }
-      })
-    }
+    return;
 
     wx.request({
       method: "PUT",
@@ -104,11 +92,7 @@ Page({
         authorization: "Bearer " + app.globalData.jwt
       },
       url: apiurl + 'Project/AddGantt/' + this.data.projectid,
-      data: {
-        startTime: this.data.starttime,
-        endTime: this.data.endtime,
-        toDo: this.data.describtion
-      },
+      data: task,
       success: (gantt) => {
 
       }
