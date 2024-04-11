@@ -77,5 +77,25 @@
 <mp-dialog buttons="{{buttons}}" bindbuttontap="buttontap" title="是否要退出项目" show="{{isDigShow}}" mask mask-closable />
 
 <mp-half-screen-dialog show="{{isAddShow}}" title="添加任务" buttons="{{halfButtons}}">
-  <text>asdf</text>
+  <mp-form id="form">
+    <mp-cells>
+      <mp-cell title="任务描述">
+        <input value="{{taskadd.toDo}}"></input>
+      </mp-cell>
+      <mp-cell title="起始时间">
+        <picker mode="date" model:value="{{taskadd.starttime}}">
+          <p>
+            {{starttime?starttime:"-"}}
+          </p>
+        </picker>
+      </mp-cell>
+      <mp-cell title="结束时间">
+        <picker mode="date" model:value="{{taskadd.endtime}}">
+          <p>
+            {{endtime?endtime:"-"}}
+          </p>
+        </picker>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
 </mp-half-screen-dialog>

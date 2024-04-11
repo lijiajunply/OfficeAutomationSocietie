@@ -27,8 +27,13 @@ Page({
         type: 'primary',
         text: '确认',
         value: 1
-      },
-    ]
+      }
+    ],
+    taskadd:{
+      toDo:"",
+      starttime: "",
+      endtime: ""
+    }
   },
   onLoad(options) {
     const a = app.globalData.projects.find(item => item.id === options.id)
@@ -97,8 +102,16 @@ Page({
   },
   addTask() {
     this.setData({
-      isAddShow: true
-    })
+      isAddShow: true,
+      taskadd:{
+        toDo:"",
+        starttime: "",
+        endtime: ""
+      }
+    });
+  },
+  addTeskResult(e) {
+    console.log(e.detail);
   },
   quitProject() {
     this.setData({
