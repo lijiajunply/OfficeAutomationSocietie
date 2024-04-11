@@ -5,10 +5,10 @@
     "pages/project/project",
     "pages/user/user",
     "pages/user_update/user_update",
-    "pages/user_passwd/user_passwd",
     "pages/project/project_detail/project_detail",
     "pages/organize/organize",
-    "pages/project/project_addtask/project_addtask"
+    "pages/project/project_addtask/project_addtask",
+    "pages/organize/organize_detail/organize_detail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -23,6 +23,10 @@
       "sdkVersionBegin": "3.0.0",
       "sdkVersionEnd": "15.255.255"
     }
+  },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
   },
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",

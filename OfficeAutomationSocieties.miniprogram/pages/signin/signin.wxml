@@ -1,7 +1,7 @@
 <!--pages/signin/signin.wxml-->
 
 <!-- <scroll-view class="scrollarea" scroll-y type="list"> -->
-<view class="container" style="align-items: center;padding: 200rpx 0;height: 80vh;">
+<view class="signup-container">
   <form bindsubmit="login">
     <view class="login-box">
       <view class="title">

@@ -1,15 +1,15 @@
-/*分割线样式*/
-.divLine{
+/* pages/organize/organize_detail/organize_detail.wxss */
+.divLine {
   background: #E0E3DA;
   width: 100%;
   height: 1rpx;
- }
+}
 
-.empty{
+.empty {
   text-align: center;
 }
 
-.image{
+.image {
   width: 90vw;
 }
 

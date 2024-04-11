@@ -19,7 +19,7 @@
       </view>
       <scroll-view class="tasks" scroll-y refresher-enable>
         <!-- 任务列表 -->
-        <view class="task task-timeout" wx:for="{{timeOutTask}}">
+        <view class="task task-timeout" wx:key="this" wx:for="{{timeOutTask}}">
           <p class="task-name">
             {{item.toDo}}
           </p>
@@ -32,7 +32,7 @@
           </p>
           </p>
         </view>
-        <view class="task task-doing" wx:for="{{doingTask}}">
+        <view class="task task-doing" wx:key="this" wx:for="{{doingTask}}">
           <p class="task-name">
             {{item.toDo}}
           </p>
@@ -45,7 +45,7 @@
           </p>
           </p>
         </view>
-        <view class="task task-todo" wx:for="{{willDoTask}}">
+        <view class="task task-todo" wx:key="this" wx:for="{{willDoTask}}">
           <p class="task-name">
             {{item.toDo}}
           </p>

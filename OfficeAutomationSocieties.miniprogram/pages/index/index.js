@@ -2,11 +2,13 @@
 const app = getApp()
 Page({
   data: {
-    task: [],
     taskCount: 0,
     doingTask: [],
     timeOutTask: [],
-    willDoTask: []
+    willDoTask: [],
+    slideviewButtons: [{
+      text : "详情"
+    }]
   },
 
   onLoad() {
@@ -37,25 +39,11 @@ Page({
       }
     });
 
-    // this.data.task.push();
-
     this.setData({
-      task: app.globalData.user.taskNotes,
       willDoTask: this.data.willDoTask,
       doingTask: this.data.doingTask,
       timeOutTask: this.data.timeOutTask
     })
-
-    console.log("所有任务:", this.data.task)
-    console.log("未来任务", this.data.willDoTask)
-    console.log("正在中任务:", this.data.doingTask)
-    console.log("超时任务:", this.data.timeOutTask)
-
-    // setInterval(()=>{
-    //   this.setData({
-    //     isLoading:false
-    //   })
-    // },300);
   },
   formatDate(dateStr) {
     const date = new Date(dateStr);

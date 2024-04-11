@@ -1,12 +1,1 @@
 /**app.wxss**/
-.container {
-  height: 88%; /* 适配底部栏 */
-  /* padding: 200rpx 0; */
-  /* width: 100%; */
-  /* display: flex;
-  flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: space-between;
-  box-sizing: border-box; */
-  /* background: linear-gradient(to bottom right, #ff6b6b, #7171ae, #10bce7); */
-} 
