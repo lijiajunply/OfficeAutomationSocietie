@@ -12,28 +12,28 @@ Page({
     timeOutTask: [],
     willDoTask: [],
     isDigShow: false,
-    isAddShow: false,
+    // isAddShow: false,
     buttons: [{
       text: "取消"
     }, {
       text: "确认"
     }],
-    halfButtons: [{
-        type: 'default',
-        text: '取消',
-        value: 0
-      },
-      {
-        type: 'primary',
-        text: '确认',
-        value: 1
-      }
-    ],
-    taskadd:{
-      toDo:"",
-      starttime: "",
-      endtime: ""
-    }
+    // halfButtons: [{
+    //     type: 'default',
+    //     text: '取消',
+    //     value: 0
+    //   },
+    //   {
+    //     type: 'primary',
+    //     text: '确认',
+    //     value: 1
+    //   }
+    // ],
+    // taskadd:{
+    //   toDo:"",
+    //   starttime: "",
+    //   endtime: ""
+    // }
   },
   onLoad(options) {
     const a = app.globalData.projects.find(item => item.id === options.id)
@@ -101,18 +101,21 @@ Page({
     })
   },
   addTask() {
-    this.setData({
-      isAddShow: true,
-      taskadd:{
-        toDo:"",
-        starttime: "",
-        endtime: ""
-      }
+    wx.navigateTo({
+      url: '../project_addtask/project_addtask',
     });
+    // this.setData({
+    //   isAddShow: true,
+    //   taskadd:{
+    //     toDo:"",
+    //     starttime: "",
+    //     endtime: ""
+    //   }
+    // });
   },
-  addTeskResult(e) {
-    console.log(e.detail);
-  },
+  // addTeskResult(e) {
+  //   console.log(e.detail);
+  // },
   quitProject() {
     this.setData({
       isDigShow: true
