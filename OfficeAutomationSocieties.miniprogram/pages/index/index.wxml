@@ -9,7 +9,7 @@
   <view class="container {{taskCount === 0?'':'task-outline'}}" style="height:auto;padding-bottom: 30rpx;">
     <block wx:if="{{taskCount === 0}}">
       <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill" />
-      <p style="">
+      <p>
         当前无任务
       </p>
     </block>
