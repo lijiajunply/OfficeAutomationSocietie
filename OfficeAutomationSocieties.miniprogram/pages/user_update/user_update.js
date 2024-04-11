@@ -5,7 +5,10 @@ const app = getApp()
 
 Page({
   data: {
-    user: {},
+    user: {
+      name: '',
+      phoneNum: ''
+    },
     rules: [
       {
         name: "name",
@@ -59,6 +62,8 @@ Page({
       wx.navigateBack()
       return
     }
+    console.log(this.data.user)
+    return
     wx.request({
       method: "POST",
       header: {
@@ -73,5 +78,10 @@ Page({
         wx.navigateBack()
       }
     })
-  }
+  },
+  handInputChange(e) {
+    this.setData({
+      [`user.${e.target.id}`]: e.detail.value
+    })
+  },
 })

@@ -4,10 +4,10 @@
   <mp-form id="form" models="{{user}}" rules="{{rules}}">
     <mp-cells>
       <mp-cell title="名称">
-        <input value="{{user.name}}"></input>
+        <input value="{{user.name}}" type="nickname" id="name" name="name" placeholder="请输入姓名" bindinput="handInputChange"></input>
       </mp-cell>
       <mp-cell title="手机号">
-        <input value="{{user.phoneNum}}"></input>
+        <input type="number" id="phoneNum" name="phoneNum" placeholder="请输入姓名" value="{{user.phoneNum}}" bindinput="handInputChange"></input>
       </mp-cell>
   </mp-cells>
   </mp-form>
