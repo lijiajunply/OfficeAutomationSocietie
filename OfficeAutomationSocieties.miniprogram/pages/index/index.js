@@ -15,11 +15,28 @@ Page({
   },
   initPage() {
     wx.showTabBar(true);
+
     this.setData({
       willDoTask: [],
       doingTask: [],
       timeOutTask: []
     })
+
+    if (app.globalData.user == null) {
+      wx.request({
+        method: "GET",
+        header: {
+          authorization: "Bearer " + app.globalData.jwt
+        },
+        url: apiurl + 'User/GetData',
+        success: (userData) => {
+          if (userData.statusCode === 200) {
+            app.globalData.user = userData.data;
+          }
+        }
+      })
+    }
+
     app.globalData.user.taskNotes.forEach(item => {
       if (item.isDone !== true) {
         this.setData({
