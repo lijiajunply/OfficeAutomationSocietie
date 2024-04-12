@@ -1,0 +1,64 @@
+<!--index.wxml-->
+<navigation-bar back="{{false}}" color="black" background="#FFF" />
+
+<view class="container">
+  <view class="buttons">
+    <navigator url="../project/project" open-type="navigate" class="button">我的项目</navigator>
+    <navigator url="../organize/organize" open-type="navigate" class="button">我的组织</navigator>
+  </view>
+  <view class="container {{taskCount === 0?'':'task-outline'}}" style="height:auto;padding-bottom: 30rpx;">
+    <block wx:if="{{taskCount === 0}}">
+      <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill" />
+      <p>
+        当前无任务
+      </p>
+    </block>
+    <block wx:else>
+      <view class="task-title">
+        任务列表
+      </view>
+      <scroll-view class="tasks" scroll-y refresher-enable>
+        <!-- 任务列表 -->
+        <view class="task task-timeout" wx:key="this" wx:for="{{timeOutTask}}">
+          <p class="task-name">
+            {{item.toDo}}
+          </p>
+          <p class="task-date">
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
+          </p>
+        </view>
+        <view class="task task-doing" wx:key="this" wx:for="{{doingTask}}">
+          <p class="task-name">
+            {{item.toDo}}
+          </p>
+          <p class="task-date">
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
+          </p>
+        </view>
+        <view class="task task-todo" wx:key="this" wx:for="{{willDoTask}}">
+          <p class="task-name">
+            {{item.toDo}}
+          </p>
+          <view class="task-date">
+            <p class="task-date-text">
+              截止至
+            </p>
+            <p>
+              {{item.endTimeFmt}}
+            </p>
+          </view>
+        </view>
+      </scroll-view>
+    </block>
+  </view>
+</view>

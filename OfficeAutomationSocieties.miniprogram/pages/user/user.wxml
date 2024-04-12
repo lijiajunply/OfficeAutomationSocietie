@@ -1,0 +1,28 @@
+<!--pages/user/user.wxml-->
+<!-- <navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar> -->
+<view class="container" style="height: 100vh;display: block;">
+  <view class="username">
+    <view class="username-content">
+      <image src="/assets/OAjiangLogo.png" style="height: 20vw;width: 20vw;margin-top: 5%;margin-right: 10rpx;" />
+      <div>
+        <text class="username-text">
+          {{username}}
+        </text>
+        <p>
+          您已经来到OA酱{{dayNum}}天了
+        </p>
+      </div>
+    </view>
+  </view>
+  <scroll-view class="option-list" scroll-y="true" type="list">
+    <view class="option">
+      <navigator class="option-button" url="../user_update/user_update" open-type="navigate"
+        hover-class="option-item-hover">
+        修改资料
+      </navigator>
+    </view>
+    <view class="option">
+      <view class="option-logout" hover-class="option-item-hover" bindtap="logout">登出</view>
+    </view>
+  </scroll-view>
+</view>

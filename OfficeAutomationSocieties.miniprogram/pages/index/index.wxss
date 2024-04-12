@@ -1,0 +1,73 @@
+/* index.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #007aff;
+  color: #ffffff;
+  padding: 20px 13%;
+  border-radius: 5px;
+}
+
+.tasks {
+  max-height: 63vh;
+}
+
+.task {
+  padding: 10px;
+  border-left: solid;
+}
+
+.task-title {
+  height: auto;
+  font-size: 14px;
+  margin-bottom: 10rpx;
+}
+
+.task-name {
+  font-size: 14px;
+  /* float: left; */
+}
+
+.task-outline {
+  width: 85%;
+  padding: 20rpx;
+  border: #f0f0f0 solid 1px;
+  border-radius: 10px;
+  background-color: rgba(240, 240, 240, 0.5);
+  /* opacity: 50%; */
+}
+
+.task-date {
+  text-align: right;
+  float: right;
+  color: #747474;
+  font-size: 0.8rem;
+}
+
+.task-date-text {
+  font-size: 0.6rem;
+}
+
+.task-timeout {
+  border-color: #ff7272;
+}
+
+.task-doing {
+  border-color: #72b6ff;
+}
+
+.task-todo {
+  border-color: #4cff64;
+}

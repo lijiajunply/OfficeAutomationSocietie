@@ -1,0 +1,20 @@
+<!--pages/signin/signin.wxml-->
+
+<!-- <scroll-view class="scrollarea" scroll-y type="list"> -->
+<view class="signup-container">
+  <form bindsubmit="login">
+    <view class="login-box">
+      <view class="title">
+        OA
+      </view>
+      <view class="input-box">
+        <input class="input" name="username" placeholder="手机号码" />
+      </view>
+      <view class="input-box">
+        <input class="input" name="password" password placeholder="密码" />
+      </view>
+      <button class="input-buttom" type="primary" form-type="submit" model:loading="{{isLoading}}">登录</button>
+    </view>
+  </form>
+</view>
+<!-- </scroll-view> -->

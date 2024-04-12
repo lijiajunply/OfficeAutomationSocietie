@@ -1,0 +1,41 @@
+/* pages/project/project_addtask/project_addtask.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  font-weight: bold;
+  color: #333333;
+  /* margin-bottom: 10px; */
+  /* text-align: center; */
+}
+
+.login-box {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.input {
+  /* margin-top: 30rpx;
+  margin-bottom: 30rpx; */
+  border-bottom: 1px solid gray;
+  width: 100%;
+}
+
+.picker {
+  border: 1px solid gray;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+
+.input-box {
+  padding: 30rpx 0 30rpx 0;
+}
+
+.input-buttom {
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}

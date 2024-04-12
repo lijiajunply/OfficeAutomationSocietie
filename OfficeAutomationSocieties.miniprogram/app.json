@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/signin/signin",
+    "pages/index/index",
+    "pages/project/project",
+    "pages/user/user",
+    "pages/user_update/user_update",
+    "pages/project/project_detail/project_detail",
+    "pages/organize/organize",
+    "pages/project/project_addtask/project_addtask",
+    "pages/organize/organize_detail/organize_detail"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "assets/home.png",
+        "selectedIconPath": "assets/home_select.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "assets/user.png",
+        "selectedIconPath": "assets/user_select.png"
+      }
+    ]
+  }
+}

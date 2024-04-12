@@ -1,0 +1,16 @@
+<navigation-bar back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+  <block wx:if="{{organizes.length === 0}}">
+    <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>
+    <text>
+      当前未加入任何组织
+    </text>
+  </block>
+  <block wx:else>
+    <scroll-view class="organize-container" type="list" scroll-y enable-flex wx:for="{{organizes}}" wx:key="this">
+      <navigator url="../organize/organize_detail/organize_detail?id={{item.id}}" class="organize-item">
+        {{item.name}}
+      </navigator>
+    </scroll-view>
+  </block>
+</view>

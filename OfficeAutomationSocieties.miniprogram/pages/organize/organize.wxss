@@ -1,0 +1,24 @@
+.organize-container {
+  /* height: 1000rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.organize-item {
+  width: 500rpx;
+  font-size: large;
+  height: 18vh;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+}

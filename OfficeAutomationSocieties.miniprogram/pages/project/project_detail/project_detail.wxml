@@ -1,0 +1,101 @@
+<!--pages/project/project_detail/project_detail.wxml-->
+<navigation-bar back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<view>
+  <view class="name">{{thisProject.name}}</view>
+  <view class="introduce">{{thisProject.introduce}}</view>
+</view>
+<view class="buttons">
+  <view class="button" bindtap="addTask">
+    添加任务
+  </view>
+  <view class="button-delete" bindtap="quitProject">
+    退出项目
+  </view>
+</view>
+<view class="divLine"></view>
+<scroll-view style="max-height: 63vh;" scroll-y refresher-enable>
+  <view class="task-outline">
+    <block wx:if="{{taskCount === 0}}" class="empty">
+      <image src="/assets/empty.svg" class="image" alt="暂无数据" mode="scaleToFill" />
+      <view style="text-align: center;">
+        当前项目无任务
+      </view>
+    </block>
+    <block wx:else>
+      <scroll-view class="tasks" scroll-y refresher-enable>
+        <view class="task-title">当前任务</view>
+        <!-- 任务列表 -->
+        <view class="task task-timeout" wx:for="{{timeOutTask}}" wx:key="this">
+          <p class="task-name">
+            {{item.toDo}}
+          </p>
+          <p class="task-date">
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
+          </p>
+        </view>
+        <view class="task task-doing" wx:for="{{doingTask}}" wx:key="this">
+          <p class="task-name">
+            {{item.toDo}}
+          </p>
+          <p class="task-date">
+          <p class="task-date-text">
+            截止至
+          </p>
+          <p>
+            {{item.endTimeFmt}}
+          </p>
+          </p>
+        </view>
+        <view class="task task-todo" wx:for="{{willDoTask}}" wx:key="this">
+          <p class="task-name">
+            {{item.toDo}}
+          </p>
+          <view class="task-date">
+            <p class="task-date-text">
+              截止至
+            </p>
+            <p>
+              {{item.endTimeFmt}}
+            </p>
+          </view>
+        </view>
+      </scroll-view>
+    </block>
+  </view>
+
+  <view class="task-outline">
+    <view class="task-title">项目人员</view>
+    <mp-cell wx:for="{{members}}" wx:key="this" title="{{item.name}}" link="true" />
+  </view>
+</scroll-view>
+
+<mp-dialog buttons="{{buttons}}" bindbuttontap="buttontap" title="是否要退出项目" show="{{isDigShow}}" mask mask-closable />
+
+<!-- <mp-half-screen-dialog show="{{isAddShow}}" title="添加任务" buttons="{{halfButtons}}" bindbuttontap="addTeskResult">
+  <mp-form id="form">
+    <mp-cells>
+      <mp-cell title="任务描述">
+        <input value="{{taskadd.toDo}}"></input>
+      </mp-cell>
+      <mp-cell title="起始时间">
+        <picker mode="date" model:value="{{taskadd.starttime}}">
+          <p>
+            {{starttime?starttime:"-"}}
+          </p>
+        </picker>
+      </mp-cell>
+      <mp-cell title="结束时间">
+        <picker mode="date" model:value="{{taskadd.endtime}}">
+          <p>
+            {{endtime?endtime:"-"}}
+          </p>
+        </picker>
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+</mp-half-screen-dialog> -->
