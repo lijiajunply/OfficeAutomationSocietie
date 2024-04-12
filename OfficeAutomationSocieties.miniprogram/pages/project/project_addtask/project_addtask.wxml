@@ -5,19 +5,19 @@
   <mp-form id="form">
     <mp-cells>
       <mp-cell title="任务名称">
-        <input value="{{task.toDo}}"></input>
+        <input id="toDo" name="toDo" value="{{task.toDo}}" bindinput="handInputChange"></input>
       </mp-cell>
       <mp-cell title="起始时间">
-        <picker mode="date" value="{{task.starttime}}">
+        <picker id="startTime" name="startTime" mode="date" value="{{task.startTime}}" bindchange="handInputChange">
           <p>
-            {{task.starttime?task.starttime:"-"}}
+            {{task.startTime?task.startTime:"-"}}
           </p>
         </picker>
       </mp-cell>
       <mp-cell title="结束时间">
-        <picker mode="date" value="{{task.endtime}}">
+        <picker id="endTime" name="endTime" mode="date" value="{{task.endTime}}" bindchange="handInputChange">
           <p>
-            {{task.endtime?task.endtime:"-"}}
+            {{task.endTime?task.endTime:"-"}}
           </p>
         </picker>
       </mp-cell>

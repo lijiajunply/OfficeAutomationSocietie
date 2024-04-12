@@ -102,7 +102,7 @@ Page({
   },
   addTask() {
     wx.navigateTo({
-      url: '../project_addtask/project_addtask',
+      url: '../project_addtask/project_addtask?id=' + this.data.thisProject.id,
     });
     // this.setData({
     //   isAddShow: true,

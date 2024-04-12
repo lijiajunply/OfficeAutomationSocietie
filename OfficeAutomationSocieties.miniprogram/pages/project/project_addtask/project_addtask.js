@@ -13,8 +13,8 @@ Page({
     projectid: "",
     task: {
       toDo: "",
-      starttime: "",
-      endtime: ""
+      startTime: "",
+      endTime: ""
     }
 
   },
@@ -23,66 +23,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    function formatDate() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+    const now =formatDate()
     this.setData({
-      projectid: options.id
+      projectid: options.id,
+      task : {
+        startTime : now,
+        endTime : now
+      }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
   },
 
   submitTask() {
     console.log(
       "ProjectID", this.data.projectid, "\n",
-      "Describtion:", this.data.describtion, "\n",
-      "StartTime:", this.data.starttime, "\n",
-      "EndTime:", this.data.endtime
+      "ToDo:", this.data.task.toDo, "\n",
+      "StartTime:", this.data.task.startTime, "\n",
+      "EndTime:", this.data.task.endTime
     );
     return;
 
@@ -97,5 +60,11 @@ Page({
 
       }
     })
-  }
+  },
+  handInputChange(e) {
+    console.log(e)
+    this.setData({
+      [`task.${e.target.id}`]: e.detail.value
+    })
+  },
 })
