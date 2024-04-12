@@ -1,14 +1,17 @@
 <!--pages/user/user.wxml-->
 <!-- <navigation-bar title="OA" back="{{false}}" color="black" background="#FFF"></navigation-bar> -->
 <view class="container" style="height: 100vh;display: block;">
-  <view>
-    <view class="username">
-      <view class="username-content">
+  <view class="username">
+    <view class="username-content">
+      <image src="/assets/OAjiangLogo.png" style="height: 20vw;width: 20vw;margin-top: 5%;margin-right: 10rpx;" />
+      <div>
         <text class="username-text">
           {{username}}
         </text>
-        您已经来到OA酱{{dayNum}}天了
-      </view>
+        <p>
+          您已经来到OA酱{{dayNum}}天了
+        </p>
+      </div>
     </view>
   </view>
   <scroll-view class="option-list" scroll-y="true" type="list">
