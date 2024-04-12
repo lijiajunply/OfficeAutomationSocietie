@@ -30,12 +30,12 @@ Page({
       const day = date.getDate().toString().padStart(2, '0');
       return `${year}-${month}-${day}`;
     }
-    const now =formatDate()
+    const now = formatDate()
     this.setData({
       projectid: options.id,
-      task : {
-        startTime : now,
-        endTime : now
+      task: {
+        startTime: now,
+        endTime: now
       }
     })
   },
@@ -47,7 +47,9 @@ Page({
       "StartTime:", this.data.task.startTime, "\n",
       "EndTime:", this.data.task.endTime
     );
-    return;
+
+
+    // return;
 
     wx.request({
       method: "PUT",
@@ -55,11 +57,14 @@ Page({
         authorization: "Bearer " + app.globalData.jwt
       },
       url: apiurl + 'Project/AddGantt/' + this.data.projectid,
-      data: task,
+      data: this.data.task,
       success: (gantt) => {
-
+        app.globalData.user.taskNotes.push(gantt.data)
+        wx.navigateBack({
+          delta: 4
+        });
       }
-    })
+    });
   },
   handInputChange(e) {
     console.log(e)

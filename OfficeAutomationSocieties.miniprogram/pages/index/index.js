@@ -7,13 +7,19 @@ Page({
     timeOutTask: [],
     willDoTask: [],
     slideviewButtons: [{
-      text : "详情"
+      text: "详情"
     }]
   },
-
-  onLoad() {
+  onShow() {
+    this.initPage()
+  },
+  initPage() {
     wx.showTabBar(true);
-
+    this.setData({
+      willDoTask: [],
+      doingTask: [],
+      timeOutTask: []
+    })
     app.globalData.user.taskNotes.forEach(item => {
       if (item.isDone !== true) {
         this.setData({
@@ -24,7 +30,7 @@ Page({
         const now = new Date()
 
         item.endTimeFmt = this.formatDate(item.endTime);
-        
+
         if (endTime < now) {
           this.data.timeOutTask.push(item)
           return
