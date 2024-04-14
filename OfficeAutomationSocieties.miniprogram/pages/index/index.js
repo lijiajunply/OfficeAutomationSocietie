@@ -11,9 +11,6 @@ Page({
     }]
   },
   onShow() {
-    this.initPage()
-  },
-  initPage() {
     wx.showTabBar(true);
 
     this.setData({
@@ -42,7 +39,7 @@ Page({
         this.setData({
           taskCount: this.data.taskCount + 1
         })
-        const starkTime = new Date(item.startTime)
+        const startTime = new Date(item.startTime)
         const endTime = new Date(item.endTime)
         const now = new Date()
 
@@ -53,7 +50,7 @@ Page({
           return
         }
 
-        if (starkTime > now) {
+        if (startTime > now) {
           this.data.willDoTask.push(item)
           return
         }
@@ -74,5 +71,5 @@ Page({
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const day = date.getDate().toString().padStart(2, '0');
     return `${year}年${month}月${day}日`;
-  }
+  } 
 })

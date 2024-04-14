@@ -1,7 +1,7 @@
 <!--pages/project/project.wxml-->
 <navigation-bar back="{{true}}" color="black" background="#FFF"></navigation-bar>
 <view class="container">
-  <block wx:if="{{organizes.length === 0}}">
+  <block wx:if="{{projects.length === 0}}">
     <image src="/assets/empty.svg" alt="暂无数据" mode="scaleToFill"/>
     <text>
       当前无项目

@@ -9,7 +9,7 @@
     查看公告
   </view>
   <view class="button-delete" bindtap="quitOrganize">
-    退出项目
+    退出组织
   </view>
 </view>
 <view class="divLine"></view>

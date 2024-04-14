@@ -3,10 +3,7 @@
     "navigation-bar": "/components/navigation-bar/navigation-bar",
     "mp-cells": "weui-miniprogram/cells/cells",
     "mp-cell": "weui-miniprogram/cell/cell",
-    "mp-dialog": "weui-miniprogram/dialog/dialog",
-    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
     "mp-form": "weui-miniprogram/form/form",
-    "mp-form-page": "weui-miniprogram/form-page/form-page",
-    "mp-slideview": "weui-miniprogram/slideview/slideview"
+    "mp-form-page": "weui-miniprogram/form-page/form-page"
   }
 }

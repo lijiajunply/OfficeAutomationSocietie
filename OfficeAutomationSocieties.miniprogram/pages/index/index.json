@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "navigation-bar": "/components/navigation-bar/navigation-bar",
-    "mp-slideview": "weui-miniprogram/slideview/slideview"
+    "navigation-bar": "/components/navigation-bar/navigation-bar"
   }
 }

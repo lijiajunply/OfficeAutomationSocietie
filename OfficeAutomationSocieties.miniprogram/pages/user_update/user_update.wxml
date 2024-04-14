@@ -9,7 +9,7 @@
       <mp-cell title="手机号">
         <input type="number" id="phoneNum" name="phoneNum" placeholder="请输入姓名" value="{{user.phoneNum}}" bindinput="handInputChange"></input>
       </mp-cell>
-  </mp-cells>
+    </mp-cells>
   </mp-form>
   <view slot="button">
       <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>

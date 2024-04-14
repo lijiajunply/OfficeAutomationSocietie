@@ -5,6 +5,7 @@
   align-items: center;
   padding: 200rpx 0;
   height: 80vh;
+  margin-top: 10vh;
 }
 
 .title {
