@@ -1,4 +1,4 @@
-const baseurl = "https://api.luckyfishes.com/";
+const baseurl = "https://oas.xauat.site/";
 const apiurl = baseurl + "api/";
 const routes = {
   user: apiurl + "Member/",

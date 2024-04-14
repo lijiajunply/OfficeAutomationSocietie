@@ -27,5 +27,6 @@
   },
   "simulatorPluginLibVersion": {
     "wxextd2e17127608c3": "2.27.3"
-  }
+  },
+  "projectname": "miniprogram"
 }
